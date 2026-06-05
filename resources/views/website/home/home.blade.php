@@ -57,6 +57,54 @@
   </div>
 </section>
 
+<section id="about" class="py-5 bg-light">
+
+  <div class="container">
+
+    <div class="row align-items-center g-4">
+
+      <!-- IMAGE -->
+      <div class="col-lg-6 d-flex">
+        <img src="{{ asset('assets/images/home/sejarah.jpeg') }}"
+             class="img-fluid about-img"
+             alt="Sejarah">
+      </div>
+
+      <!-- TEXT -->
+      <div class="col-lg-6">
+
+        <div class="sejarah-wrap">
+
+          <h2 class="fw-bold text-success display-5 mb-2">
+            Pesantren Al-Qur'an Rizky Amalia
+          </h2>
+
+          <div class="about-text mt-4">
+            <div class="text-muted fs-6 lh-lg about-content">
+              <p>
+                <strong>Pesantren Al-Qur'an Rizky Amalia</strong> tidak bisa lepas dari tokoh ulama Indonesia yang memiliki visi besar dalam pendidikan Islam.
+              </p>
+
+              <p>
+                Selang dua dekade, tepatnya tahun 1991, semangatnya membangun umat mendorong untuk mendirikan pondok pesantren baru yang menjadi pusat pendidikan Al-Qur'an.
+              </p>
+            </div>
+          </div>
+
+          <a href="https://unilam.ac.id/sejarah"
+            class="btn btn-success rounded-pill px-4 mt-3">
+            Selengkapnya
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
 <style>
 
   #hero,
@@ -106,9 +154,44 @@
   }
 
   .hero-content {
-    width: 100%;
-    padding: 0 15px;
-}
+      width: 100%;
+      padding: 0 15px;
+  }
+
+  .about-img {
+      transition: transform 0.3s ease;
+  }
+
+  .about-img:hover {
+      transform: scale(1.03);
+  }
+
+  .sejarah-wrap {
+      padding-left: 20px;
+      border-left: 4px solid #198754;
+  }
+
+  .sejarah-wrap h2 {
+      letter-spacing: -0.5px;
+  }
+
+  .sejarah-wrap p {
+      margin-bottom: 12px;
+  }
+
+  .about-content p {
+      margin-bottom: 14px;
+      line-height: 1.8;
+      color: #6c757d;
+  }
+
+  .about-content p:first-child {
+      margin-top: 0;
+  }
+
+  .about-content strong {
+      color: #198754;
+  }
 
 @media (max-width: 576px) {
     .hero-content h1 {
