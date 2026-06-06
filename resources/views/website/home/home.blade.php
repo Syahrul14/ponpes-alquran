@@ -62,55 +62,91 @@
   <div class="container">
 
     <div class="row align-items-center g-4">
-
-      <!-- IMAGE -->
       <div class="col-lg-6 d-flex">
         <img src="{{ asset('assets/images/home/sejarah.jpeg') }}"
              class="img-fluid about-img"
              alt="Sejarah">
       </div>
-
-      <!-- TEXT -->
       <div class="col-lg-6">
-
         <div class="sejarah-wrap">
-
           <h2 class="fw-bold text-success display-5 mb-2">
             Pesantren Al-Qur'an Rizky Amalia
           </h2>
-
           <div class="about-text mt-4">
             <div class="text-muted fs-6 lh-lg about-content">
               <p>
                 <strong>Pesantren Al-Qur'an Rizky Amalia</strong> tidak bisa lepas dari tokoh ulama Indonesia yang memiliki visi besar dalam pendidikan Islam.
               </p>
-
               <p>
                 Selang dua dekade, tepatnya tahun 1991, semangatnya membangun umat mendorong untuk mendirikan pondok pesantren baru yang menjadi pusat pendidikan Al-Qur'an.
               </p>
             </div>
           </div>
-
-          <a href="https://unilam.ac.id/sejarah"
+          <a href="sejarah"
             class="btn btn-success rounded-pill px-4 mt-3">
             Selengkapnya
           </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section id="testimonials" class="testimonials section-bg">
+  <div class="container aos-init aos-animate" data-aos="fade-up">
+    <div class="section-header text-secondary">
+        <h2>Kata Mereka</h2>
+        <p>Melalui jejaring alumni, kami bertanya terkait kesan mereka pesantren di Ponpes Al-Qur'an Rizky Amalia. Berikut ini pernyataan dari Alumni.</p>
+    </div>
+    <div id="carouselAlumni" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      
+      <div class="carousel-inner">
+        
+        <div class="carousel-item active">
+          <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
+            <div class="card-body p-4 text-center">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="rounded-circle mb-3 border border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
+              <h5 class="card-title fw-bold mb-1">Ahmad Fauzi</h5>
+              <p class="text-muted small mb-3">Kepala Sekolah SDN 1 Timur</p>
+              <p class="card-text text-secondary" style="font-style: italic;">"Belajar di Ponpes Rizky Amalia memberikan saya fondasi agama yang kuat dan lingkungan yang sangat mendukung untuk menghafal Al-Qur'an."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
+            <div class="card-body p-4 text-center">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop" class="rounded-circle mb-3 border border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
+              <h5 class="card-title fw-bold mb-1">Siti Nurhaliza</h5>
+              <p class="text-muted small mb-3">Manager PT Xyz</p>
+              <p class="card-text text-secondary" style="font-style: italic;">"Metode pembelajaran tahfidznya sangat sistematis. Para pengajar sangat sabar dan membimbing kami hingga benar-benar mutqin."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
+            <div class="card-body p-4 text-center">
+              <img src="https://images.unsplash.com/photo-1780570589435-059359e813cc?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-circle mb-3 border border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
+              <h5 class="card-title fw-bold mb-1">Muhammad Rizky</h5>
+              <p class="text-muted small mb-3">Pengusaha</p>
+              <p class="card-text text-secondary" style="font-style: italic;">"Bukan hanya sekadar menghafal, kami juga diajarkan bagaimana mengamalkan nilai-nilai Al-Qur'an dalam kehidupan bermasyarakat."</p>
+            </div>
+          </div>
         </div>
 
       </div>
+
     </div>
-
   </div>
-
 </section>
 
 <style>
 
   #hero,
   #heroCarousel,
-  .carousel-inner,
-  .carousel-item {
+  #hero .carousel-inner,
+  #hero .carousel-item {
       height: 100vh;
   }
 
@@ -191,6 +227,53 @@
 
   .about-content strong {
       color: #198754;
+  }
+
+  .section-bg {
+      background-color: #f5f6f7;
+  }
+
+  .testimonials {
+      padding: 80px 0;
+      overflow: hidden;
+  }
+
+  .section-header {
+      text-align: center;
+      padding: 0 20px 40px 20px;
+  }
+
+  .section-header h2 {
+      font-size: clamp(22px, 4vw, 32px); 
+      font-weight: 700;
+      color: #2e3135;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+  }
+
+  .section-header h2::before,
+  .section-header h2::after {
+      content: "";
+      width: 40px;
+      height: 2px;
+      background: #198754;
+      flex-shrink: 0;
+  }
+
+  .section-header p {
+      font-size: clamp(14px, 2.5vw, 16px);
+      color: #6c757d;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+  }
+
+  #carouselAlumni .carousel-item {
+      height: auto !important;
+      min-height: initial !important;
   }
 
 @media (max-width: 576px) {
