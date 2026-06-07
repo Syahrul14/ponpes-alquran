@@ -32,7 +32,7 @@
             Profil
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item text-success" href="#sejarah">Sejarah</a></li>
+            <li><a class="dropdown-item text-success" href="/tentang/sejarah">Sejarah</a></li>
             <li><a class="dropdown-item text-success" href="#visi">Visi & Misi</a></li>
           </ul>
         </li>

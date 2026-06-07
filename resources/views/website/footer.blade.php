@@ -55,9 +55,9 @@
       <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
         <p class="mb-0 text-secondary small">&copy; {{ date('Y') }} Ponpes Al-Qur'an Rizky Amalia. All Rights Reserved.</p>
       </div>
-      {{-- <div class="col-md-6 text-center text-md-end">
+      <div class="col-md-6 text-center text-md-end">
         <p class="mb-0 text-secondary small">Developed by <span class="text-success-subtle fw-semibold">Syahrul Rizal</span></p>
-      </div> --}}
+      </div>
     </div>
 
   </div>
