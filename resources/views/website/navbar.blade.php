@@ -24,11 +24,11 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-medium">
 
         <li class="nav-item">
-          <a class="nav-link text-success active" href="#hero">Beranda</a>
+          <a class="nav-link text-success {{ request()->is('/') ? 'active' : '' }}" href="/">Beranda</a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-success" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle text-success {{ request()->is('tentang/*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
             Profil
           </a>
           <ul class="dropdown-menu">

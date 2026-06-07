@@ -9,3 +9,5 @@ Route::get('/', function () {
 Route::get('/tentang/sejarah', function () {
     return view('website.about.history');
 });
+
+
