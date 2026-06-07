@@ -33,7 +33,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item text-success" href="/tentang/sejarah">Sejarah</a></li>
-            <li><a class="dropdown-item text-success" href="#visi">Visi & Misi</a></li>
+            <li><a class="dropdown-item text-success" href="/tentang/visi-misi">Visi & Misi</a></li>
           </ul>
         </li>
         <li class="nav-item">

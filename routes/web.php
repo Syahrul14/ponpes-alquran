@@ -6,8 +6,12 @@ Route::get('/', function () {
     return view('website.home.home');
 });
 
-Route::get('/tentang/sejarah', function () {
-    return view('website.about.history');
+Route::prefix('tentang')->group(function () {
+    Route::get('/sejarah', function () {
+        return view('website.about.history');
+    });
+    Route::get('/visi-misi', function () {
+        return view('website.about.visi_misi');
+    });
 });
-
 

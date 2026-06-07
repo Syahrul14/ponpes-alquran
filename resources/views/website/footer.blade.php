@@ -15,7 +15,7 @@
         <ul class="list-unstyled text-secondary small">
           <li class="mb-2 d-flex align-items-start">
             <i class="fas fa-map-marker-alt text-success mt-1 me-2"></i>
-            <span>Jl. Raya Ponpes No. 12, Kecamatan Buahdua, Kabupaten Sumedang</span>
+            <span>Jl. Raya Ponpes No. 12, Kecamatan xxx, Kabupaten xxx</span>
           </li>
           <li class="mb-2">
             <i class="fas fa-phone text-success me-2"></i>+62 812-3456-7890
@@ -55,9 +55,9 @@
       <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
         <p class="mb-0 text-secondary small">&copy; {{ date('Y') }} Ponpes Al-Qur'an Rizky Amalia. All Rights Reserved.</p>
       </div>
-      <div class="col-md-6 text-center text-md-end">
+      {{-- <div class="col-md-6 text-center text-md-end">
         <p class="mb-0 text-secondary small">Developed by <span class="text-success-subtle fw-semibold">Syahrul Rizal</span></p>
-      </div>
+      </div> --}}
     </div>
 
   </div>
