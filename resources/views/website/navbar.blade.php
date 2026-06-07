@@ -37,10 +37,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-success" href="#program">Program</a>
+          <a class="nav-link text-success {{ request()->is('program') ? 'active' : '' }}" href="/program">Program</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-success" href="#prestasi">Prestasi</a>
+          <a class="nav-link text-success {{ request()->is('prestasi') ? 'active' : '' }}" href="/prestasi">Prestasi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-success" href="#fasilitas">Fasilitas</a>

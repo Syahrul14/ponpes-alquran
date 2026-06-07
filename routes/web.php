@@ -15,3 +15,11 @@ Route::prefix('tentang')->group(function () {
     });
 });
 
+Route::get('/program', function () {
+    return view('website.program.program');
+});
+
+Route::get('/prestasi', function () {
+    return view('website.prestasi.prestasi');
+});
+
