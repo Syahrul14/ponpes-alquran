@@ -1,6 +1,6 @@
 @extends('website.layout')
 
-@section('title', 'Prestasi')
+@section('title', 'Berita')
 
 @section('content')
 <section id="hero-page" class="hero-page d-flex align-items-center position-relative text-white" 
@@ -22,7 +22,7 @@
     </div>
 </section>
 
-<section class="fasilitas py-5 bg-light">
+<section class="py-5 bg-light">
   <div class="container">
 
     <div class="row g-4">

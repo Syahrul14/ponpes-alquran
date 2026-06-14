@@ -35,3 +35,16 @@ Route::get('/informasi/berita/detail', function () {
     return view('website.berita.berita_detail');
 });
 
+Route::get('/informasi/informasi', function() {
+    return view('website.informasi.informasi');
+});
+
+Route::get('/informasi/informasi/detail', function() {
+    return view('website.informasi.informasi_detail');
+});
+
+
+Route::get('hubungi-kami', function () {
+    return view('website.hubungi_kami.hubungi_kami');
+});
+

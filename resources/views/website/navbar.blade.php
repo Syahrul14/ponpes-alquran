@@ -51,12 +51,12 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item text-success" href="/informasi/berita">Berita</a></li>
-            <li><a class="dropdown-item text-success" href="#informasi">Informasi</a></li>
+            <li><a class="dropdown-item text-success" href="/informasi/informasi">Informasi</a></li>
           </ul>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-success" href="#infaq">Hubungi Kami</a>
+          <a class="nav-link text-success {{ request()->is('hubungi-kami') ? 'active' : '' }}" href="/hubungi-kami">Hubungi Kami</a>
         </li>
 
       </ul>

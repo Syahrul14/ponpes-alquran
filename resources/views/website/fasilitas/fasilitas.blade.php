@@ -1,6 +1,6 @@
 @extends('website.layout')
 
-@section('title', 'Prestasi')
+@section('title', 'Fasilitas')
 
 @section('content')
 <section id="hero-page" class="hero-page d-flex align-items-center position-relative text-white" 
