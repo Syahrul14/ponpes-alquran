@@ -28,12 +28,12 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-success {{ request()->is('tentang/*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle text-success {{ request()->is('profil/*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
             Profil
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item text-success" href="/tentang/sejarah">Sejarah</a></li>
-            <li><a class="dropdown-item text-success" href="/tentang/visi-misi">Visi & Misi</a></li>
+            <li><a class="dropdown-item text-success" href="/profil/sejarah">Sejarah</a></li>
+            <li><a class="dropdown-item text-success" href="/profil/visi-misi">Visi & Misi</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -43,14 +43,14 @@
           <a class="nav-link text-success {{ request()->is('prestasi') ? 'active' : '' }}" href="/prestasi">Prestasi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-success" href="#fasilitas">Fasilitas</a>
+          <a class="nav-link text-success {{ request()->is('fasilitas') ? 'active' : '' }}" href="/fasilitas">Fasilitas</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-success" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle text-success {{ request()->is('informasi/*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
             Informasi
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item text-success" href="#berita">Berita</a></li>
+            <li><a class="dropdown-item text-success" href="/informasi/berita">Berita</a></li>
             <li><a class="dropdown-item text-success" href="#informasi">Informasi</a></li>
           </ul>
         </li>
