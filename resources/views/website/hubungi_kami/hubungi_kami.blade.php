@@ -74,7 +74,7 @@
                         <i class="fas fa-map-marker-alt me-3 text-danger"></i>
                         <div>
                             <strong>Alamat</strong>
-                            <p class="mb-0 text-muted">Jl. Contoh No.123, Serang, Banten</p>
+                            <p class="mb-0 text-muted">Jl. Contoh No.123, XXX, XXX</p>
                         </div>
                     </div>
 
@@ -110,7 +110,7 @@
         <!-- Map -->
         <div class="mt-5">
             <iframe 
-                src="https://www.google.com/maps?q=Serang,Banten&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.97085556088!2d110.33364489021656!3d-7.803248457435839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a582c7e459e7b%3A0x5701c5404fb7a847!2sLempuyangan!5e0!3m2!1sen!2sid!4v1781430015998!5m2!1sen!2sid"
                 width="100%" 
                 height="350" 
                 style="border:0; border-radius: 10px;" 

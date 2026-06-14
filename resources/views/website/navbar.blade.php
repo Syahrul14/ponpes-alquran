@@ -52,6 +52,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item text-success" href="/informasi/berita">Berita</a></li>
             <li><a class="dropdown-item text-success" href="/informasi/informasi">Informasi</a></li>
+            <li><a class="dropdown-item text-success" href="/informasi/infaq">Infaq</a></li>
           </ul>
         </li>
 

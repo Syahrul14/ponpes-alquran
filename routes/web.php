@@ -43,6 +43,10 @@ Route::get('/informasi/informasi/detail', function() {
     return view('website.informasi.informasi_detail');
 });
 
+Route::get('/informasi/infaq', function () {
+    return view('website.infaq.infaq');
+});
+
 
 Route::get('hubungi-kami', function () {
     return view('website.hubungi_kami.hubungi_kami');
