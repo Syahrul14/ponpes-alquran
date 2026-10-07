@@ -18,7 +18,7 @@
 <body>
     <script src="{{ asset('assets/administrator_assets/mazer/assets/static/js/initTheme.js') }}"></script>
     <div id="app">
-        {{-- @include('administrator.sidebar') --}}
+        @include('administrator.sidebar')
 
         <main id="main" role="main">
             <header class="mb-3 d-flex justify-content-between align-items-center">
@@ -38,18 +38,18 @@
                                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                         </svg>
 
-                        {{-- <span class="small">{{ Auth::user()->name }}</span> --}}
+                        <span class="small">{{ Auth::user()->name ?? 'Administrator' }}</span>
                     </button>
 
 
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                         <li>
-                            {{-- <form action="{{ route('admin.logout') }}" method="POST">
+                            <form action="{{ route('administrator.logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="dropdown-item text-danger">
                                     <i class="bi bi-box-arrow-right me-2"></i> Logout
                                 </button>
-                            </form> --}}
+                            </form>
                         </li>
                     </ul>
                 </div>
