@@ -49,16 +49,16 @@
 
                 @csrf
 
-                {{-- Email --}}
+                {{-- Username / Email --}}
                 <div class="form-group position-relative has-icon-left mb-4">
 
                     <input
-                        type="email"
-                        name="email"
+                        type="text"
+                        name="username"
                         class="form-control form-control-xl"
-                        placeholder="Email"
-                        value="{{ old('email') }}"
-                        autocomplete="email"
+                        placeholder="Username atau Email"
+                        value="{{ old('username') }}"
+                        autocomplete="username"
                         required
                     >
 
@@ -68,7 +68,7 @@
 
                 </div>
 
-                @error('email')
+                @error('username')
                     <div class="text-danger small mb-3">
                         {{ $message }}
                     </div>
