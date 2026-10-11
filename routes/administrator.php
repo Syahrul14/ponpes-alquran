@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Administrator\Home\HomeBannerController;
 use App\Http\Controllers\Administrator\Home\HomeProfileController;
+use App\Http\Controllers\Administrator\Home\HomeAlumniController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -56,6 +57,13 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [HomeProfileController::class, 'store'])->name('admin.home_profile.store');
         Route::put('/update/{id}', [HomeProfileController::class, 'update'])->name('admin.home_profile.update');
         Route::delete('/delete/{id}', [HomeProfileController::class, 'delete'])->name('admin.home_profile.delete');
+      });
+
+      Route::prefix('home-alumni')->group(function () {
+        Route::get('/', [HomeAlumniController::class, 'getData'])->name('admin.home_alumni.getData');
+        Route::post('/store', [HomeAlumniController::class, 'store'])->name('admin.home_alumni.store');
+        Route::put('/update/{id}', [HomeAlumniController::class, 'update'])->name('admin.home_alumni.update');
+        Route::delete('/delete/{id}', [HomeAlumniController::class, 'delete'])->name('admin.home_alumni.delete');
       });
 
     Route::post('/logout', function (Request $request) {

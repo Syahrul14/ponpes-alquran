@@ -57,17 +57,20 @@
 
                 <li class="sidebar-title">Kelola Konten</li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.home_banner.*') || request()->routeIs('admin.home_profile.*') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.home_banner.*') || request()->routeIs('admin.home_profile.*') || request()->routeIs('admin.home_alumni.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-building"></i>
                         <span>Home</span>
                     </a>
-                    <ul class="submenu {{ request()->routeIs('admin.home_banner.*') || request()->routeIs('admin.home_profile.*') ? 'submenu-open' : '' }}">
+                    <ul class="submenu {{ request()->routeIs('admin.home_banner.*') || request()->routeIs('admin.home_profile.*') || request()->routeIs('admin.home_alumni.*') ? 'submenu-open' : '' }}">
                         <li class="submenu-item {{ request()->routeIs('admin.home_banner.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.home_banner.getData') }}" class="submenu-link">Home Banner</a>
                         </li>
                         <li class="submenu-item {{ request()->routeIs('admin.home_profile.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.home_profile.getData') }}" class="submenu-link">Home Profile</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('admin.home_alumni.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.home_alumni.getData') }}" class="submenu-link">Home Alumni</a>
                         </li>
                     </ul>
                 </li>

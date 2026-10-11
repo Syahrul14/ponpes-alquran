@@ -4,6 +4,7 @@ namespace App\Repositories\Website\Home;
 
 use App\Models\Administrator\Home\HomeBannerModel;
 use App\Models\Administrator\Home\HomeProfileModel;
+use App\Models\Administrator\Home\HomeAlumniModel;
 
 class HomeRepository
 {
@@ -13,6 +14,7 @@ class HomeRepository
         return [
             'home_banner' => $this->cmsHomeBanner(),
             'home_profile' => $this->cmsHomeProfile(),
+            'home_alumni' => $this->cmsHomeAlumni(),
         ];
     }
 
@@ -24,5 +26,10 @@ class HomeRepository
     public function cmsHomeProfile()
     {
         return HomeProfileModel::firstOrNew();
+    }
+
+    public function cmsHomeAlumni()
+    {
+        return HomeAlumniModel::latest()->get();
     }
 }

@@ -115,40 +115,31 @@
     <div id="carouselAlumni" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
       
       <div class="carousel-inner">
-        
-        <div class="carousel-item active">
-          <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
-            <div class="card-body p-4 text-center">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
-              <h5 class="card-title fw-bold mb-1">Ahmad Fauzi</h5>
-              <p class="text-muted small mb-3">Kepala Sekolah SDN 1 Timur</p>
-              <p class="card-text text-secondary" style="font-style: italic;">"Belajar di Ponpes Rizky Amalia memberikan saya fondasi agama yang kuat dan lingkungan yang sangat mendukung untuk menghafal Al-Qur'an."</p>
+        @forelse ($data['home_alumni'] as $index => $alumni)
+          <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+            <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
+              <div class="card-body p-4 text-center">
+                <img src="{{ $alumni->image ? asset('storage/' . $alumni->image) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop' }}" class="rounded-circle mb-3 border-3 border-success-subtle" alt="{{ $alumni->name }}" style="width: 80px; height: 80px; object-fit: cover;">
+                <h5 class="card-title fw-bold mb-1">{{ $alumni->name }}</h5>
+                @if ($alumni->current_position)
+                  <p class="text-muted small mb-3">{{ $alumni->current_position }}</p>
+                @endif
+                <p class="card-text text-secondary" style="font-style: italic;">"{!! nl2br(e($alumni->message)) !!}"</p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
-            <div class="card-body p-4 text-center">
-              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
-              <h5 class="card-title fw-bold mb-1">Siti Nurhaliza</h5>
-              <p class="text-muted small mb-3">Manager PT Xyz</p>
-              <p class="card-text text-secondary" style="font-style: italic;">"Metode pembelajaran tahfidznya sangat sistematis. Para pengajar sangat sabar dan membimbing kami hingga benar-benar mutqin."</p>
+        @empty
+          <div class="carousel-item active">
+            <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
+              <div class="card-body p-4 text-center">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
+                <h5 class="card-title fw-bold mb-1">Ahmad Fauzi</h5>
+                <p class="text-muted small mb-3">Kepala Sekolah SDN 1 Timur</p>
+                <p class="card-text text-secondary" style="font-style: italic;">"Belajar di Ponpes Rizky Amalia memberikan saya fondasi agama yang kuat dan lingkungan yang sangat mendukung untuk menghafal Al-Qur'an."</p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
-            <div class="card-body p-4 text-center">
-              <img src="https://images.unsplash.com/photo-1780570589435-059359e813cc?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
-              <h5 class="card-title fw-bold mb-1">Muhammad Rizky</h5>
-              <p class="text-muted small mb-3">Pengusaha</p>
-              <p class="card-text text-secondary" style="font-style: italic;">"Bukan hanya sekadar menghafal, kami juga diajarkan bagaimana mengamalkan nilai-nilai Al-Qur'an dalam kehidupan bermasyarakat."</p>
-            </div>
-          </div>
-        </div>
-
+        @endforelse
       </div>
 
     </div>
