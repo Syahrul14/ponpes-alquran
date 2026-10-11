@@ -16,6 +16,17 @@
   </div>
 @endif
 
+@if ($errors->any())
+  <div class="alert alert-danger alert-dismissible show fade">
+    <ul class="mb-0">
+      @foreach ($errors->all() as $err)
+        <li>{{ $err }}</li>
+      @endforeach
+    </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+@endif
+
 <div class="card">
     <div class="card-header">
         <h5 class="card-title">

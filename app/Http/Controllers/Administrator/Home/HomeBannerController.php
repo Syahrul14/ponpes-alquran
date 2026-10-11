@@ -25,18 +25,29 @@ class HomeBannerController extends Controller
 
     public function store(Request $request)
     {
-        $uploadErrors = [];
+        $rawErrors = [];
         foreach (['image_1', 'image_2', 'image_3'] as $img) {
-            if ($request->hasFile($img)) {
-                $file = $request->file($img);
-                if (!$file->isValid()) {
-                    $uploadErrors[] = "{$img}: " . $file->getErrorMessage() . " (error code: " . $file->getError() . ")";
+            if (isset($_FILES[$img]) && !empty($_FILES[$img]['name'])) {
+                $err = $_FILES[$img]['error'];
+                $size = $_FILES[$img]['size'];
+                $name = $_FILES[$img]['name'];
+                if ($err !== UPLOAD_ERR_OK) {
+                    $errorNames = [
+                        UPLOAD_ERR_INI_SIZE => 'UPLOAD_ERR_INI_SIZE (Melebihi upload_max_filesize PHP)',
+                        UPLOAD_ERR_FORM_SIZE => 'UPLOAD_ERR_FORM_SIZE (Melebihi MAX_FILE_SIZE form)',
+                        UPLOAD_ERR_PARTIAL => 'UPLOAD_ERR_PARTIAL (File hanya terupload sebagian)',
+                        UPLOAD_ERR_NO_FILE => 'UPLOAD_ERR_NO_FILE (Tidak ada file)',
+                        UPLOAD_ERR_NO_TMP_DIR => 'UPLOAD_ERR_NO_TMP_DIR (Folder temp PHP tidak ada)',
+                        UPLOAD_ERR_CANT_WRITE => 'UPLOAD_ERR_CANT_WRITE (Gagal menulis ke disk temp)',
+                        UPLOAD_ERR_EXTENSION => 'UPLOAD_ERR_EXTENSION (Dibatalkan ekstensi PHP)',
+                    ];
+                    $rawErrors[] = "{$img} ({$name}, {$size} bytes): " . ($errorNames[$err] ?? "Error code {$err}");
                 }
             }
         }
 
-        if (!empty($uploadErrors)) {
-            return redirect()->back()->with('error', 'Upload error: ' . implode(', ', $uploadErrors));
+        if (!empty($rawErrors)) {
+            return redirect()->back()->with('error', 'Penyebab Gagal Upload: ' . implode(' | ', $rawErrors));
         }
 
         DB::beginTransaction();
@@ -45,9 +56,9 @@ class HomeBannerController extends Controller
                 'title' => 'nullable|string',
                 'sub_title' => 'nullable|string',
                 'link' => 'nullable|string',
-                'image_1' => 'nullable|file|mimes:jpg,jpeg,png,gif,bmp,webp,svg,svgz|max:2048',
-                'image_2' => 'nullable|file|mimes:jpg,jpeg,png,gif,bmp,webp,svg,svgz|max:2048',
-                'image_3' => 'nullable|file|mimes:jpg,jpeg,png,gif,bmp,webp,svg,svgz|max:2048',
+                'image_1' => 'nullable|file|mimes:jpg,jpeg,png,gif,bmp,webp,svg,svgz|max:20480',
+                'image_2' => 'nullable|file|mimes:jpg,jpeg,png,gif,bmp,webp,svg,svgz|max:20480',
+                'image_3' => 'nullable|file|mimes:jpg,jpeg,png,gif,bmp,webp,svg,svgz|max:20480',
             ]);
 
             $folder = 'uploads/home_banner';
