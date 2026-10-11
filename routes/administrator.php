@@ -4,6 +4,7 @@ use App\Http\Controllers\Administrator\Home\HomeBannerController;
 use App\Http\Controllers\Administrator\Home\HomeProfileController;
 use App\Http\Controllers\Administrator\Home\HomeAlumniController;
 use App\Http\Controllers\Administrator\About\History\HistoryBannerController;
+use App\Http\Controllers\Administrator\About\History\HistoryProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -72,6 +73,13 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [HistoryBannerController::class, 'store'])->name('admin.history_banner.store');
         Route::put('/update/{id}', [HistoryBannerController::class, 'update'])->name('admin.history_banner.update');
         Route::delete('/delete/{id}', [HistoryBannerController::class, 'delete'])->name('admin.history_banner.delete');
+      });
+
+      Route::prefix('history-profile')->group(function () {
+        Route::get('/', [HistoryProfileController::class, 'getData'])->name('admin.history_profile.getData');
+        Route::post('/store', [HistoryProfileController::class, 'store'])->name('admin.history_profile.store');
+        Route::put('/update/{id}', [HistoryProfileController::class, 'update'])->name('admin.history_profile.update');
+        Route::delete('/delete/{id}', [HistoryProfileController::class, 'delete'])->name('admin.history_profile.delete');
       });
 
     Route::post('/logout', function (Request $request) {

@@ -75,14 +75,17 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.history_banner.*') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.history_banner.*') || request()->routeIs('admin.history_profile.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-info-circle-fill"></i>
                         <span>Tentang Kami</span>
                     </a>
-                    <ul class="submenu {{ request()->routeIs('admin.history_banner.*') ? 'submenu-open' : '' }}">
+                    <ul class="submenu {{ request()->routeIs('admin.history_banner.*') || request()->routeIs('admin.history_profile.*') ? 'submenu-open' : '' }}">
                         <li class="submenu-item {{ request()->routeIs('admin.history_banner.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.history_banner.getData') }}" class="submenu-link">History Banner</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('admin.history_profile.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.history_profile.getData') }}" class="submenu-link">History Profile</a>
                         </li>
                     </ul>
                 </li>

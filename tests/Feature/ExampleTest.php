@@ -16,4 +16,11 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_history_page_returns_successful_response(): void
+    {
+        $response = $this->get('/profil/sejarah');
+
+        $response->assertStatus(200);
+    }
 }

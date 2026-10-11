@@ -5,6 +5,7 @@
 @section('content')
 @php
     $banner = $data['history_banner'] ?? null;
+    $profile = $data['history_profile'] ?? null;
 @endphp
 
 <section id="hero-page" class="hero-page d-flex align-items-center position-relative text-white" 
@@ -34,8 +35,8 @@
                 <div class="position-relative ps-4 pb-4">
                     <div class="position-absolute bottom-0 start-0 bg-success-subtle rounded-3" style="width: 85%; height: 85%; z-index: 1;"></div>
                     
-                    <img src="{{ asset('assets/images/home/home_banner_1.jpg') }}" 
-                         alt="Gedung Ponpes Al-Quran Rizky Amalia" 
+                    <img src="{{ !empty($profile?->image) ? asset('storage/' . $profile->image) : asset('assets/images/home/home_banner_1.jpg') }}" 
+                         alt="{{ !empty($profile?->title) ? $profile->title : 'Gedung Ponpes Al-Quran Rizky Amalia' }}" 
                          class="img-fluid rounded-3 shadow-lg position-relative" 
                          style="z-index: 2; object-fit: cover; width: 100%; max-height: 400px;">
                 </div>
@@ -43,21 +44,14 @@
 
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="align-self-center">
-                    <span class="text-success fw-bold text-uppercase tracking-wider small d-block mb-2">Awal Mula Perjalanan</span>
-                    <h2 class="fw-bold text-dark mb-4">Membangun Generasi Qur'ani Sejak Awal Berdiri</h2>
+                    <span class="text-success fw-bold text-uppercase tracking-wider small d-block mb-2">{{ $profile->title }}</span>
 
                     <div class="sejarah-body text-secondary">
-                      <p>
-                          Pondok Pesantren Al-Qur'an Rizky Amalia didirikan atas dasar ketulusan niat dan kepedulian yang mendalam terhadap kualitas pendidikan agama generasi muda. Berawal dari sebuah majelis ta'lim sederhana yang diprakarsai oleh para pendiri, pesantren ini berkomitmen penuh untuk melahirkan huffadz (penghafal Al-Qur'an) yang tidak hanya unggul dalam hafalan, tetapi juga matang dalam berakhlak mulia.
-                      </p>
-                      
-                      <p>
-                          Seiring berjalannya waktu, dukungan dari para tokoh masyarakat, alumni, dan para wali santri terus mengalir. Hal ini memicu transformasi besar hingga majelis kecil tersebut berkembang menjadi institusi pendidikan formal dan informal terpadu seperti sekarang, yang menyediakan fasilitas representatif bagi santri dari berbagai penjuru wilayah.
-                      </p>
+                      {!! $profile->description !!}
                     </div>
 
                     <div class="border-start border-4 border-success ps-3 my-4 py-1 bg-light rounded-end">
-                        <p class="fst-italic text-dark mb-1 fw-medium">"Menjadikan Al-Qur'an sebagai pemandu jalan hidup, serta membentuk santri yang mandiri, cerdas, dan siap mengabdi untuk umat."</p>
+                        <p class="fst-italic text-dark mb-1 fw-medium">"{{ $profile->quotes }}"</p>
                     </div>
                 </div>
             </div>
