@@ -3,15 +3,17 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="{{ route('administrator.dashboard') }}" class="d-flex align-items-center gap-2 text-decoration-none">
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo Ponpes" style="height: 38px; width: auto;" onerror="this.style.display='none'">
+                    <a href="{{ route('administrator.dashboard') }}"
+                        class="d-flex align-items-center gap-2 text-decoration-none">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo Ponpes"
+                            style="height: 38px; width: auto;" onerror="this.style.display='none'">
                         <span class="fs-6 fw-bold text-primary">Ponpes Al-Qur'an</span>
                     </a>
                 </div>
                 <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-                        role="img" class="iconify iconify--system-uicons" width="20" height="20"
-                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20"
+                        height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
                         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path
@@ -28,8 +30,8 @@
                         <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
                         <label class="form-check-label"></label>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-                        role="img" class="iconify iconify--mdi" width="20" height="20"
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20"
                         preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3l3.19.09m3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95l2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-2.47c-3.15-2.6-4.57-6.72-3.8-10.74c-.58.74-1.03 1.6-1.31 2.54c-.9 3.03-.1 6.35 2.14 8.59c2.24 2.24 5.56 3.04 8.59 2.14c.94-.28 1.8-.73 2.54-1.31c-.13.3-.26.59-.36.75Z">
@@ -55,20 +57,14 @@
 
                 <li class="sidebar-title">Kelola Konten</li>
 
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.home_banner.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-building"></i>
-                        <span>Profil Ponpes</span>
+                        <span>Home</span>
                     </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#" class="submenu-link">Sejarah</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#" class="submenu-link">Visi & Misi</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#" class="submenu-link">Fasilitas</a>
+                    <ul class="submenu {{ request()->routeIs('admin.home_banner.*') ? 'submenu-open' : '' }}">
+                        <li class="submenu-item {{ request()->routeIs('admin.home_banner.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.home_banner.getData') }}" class="submenu-link">Home Banner</a>
                         </li>
                     </ul>
                 </li>
@@ -143,7 +139,8 @@
                 <li class="sidebar-item">
                     <form action="{{ route('administrator.logout') }}" method="POST" id="sidebar-logout-form">
                         @csrf
-                        <a href="#" class="sidebar-link text-danger" onclick="event.preventDefault(); document.getElementById('sidebar-logout-form').submit();">
+                        <a href="#" class="sidebar-link text-danger"
+                            onclick="event.preventDefault(); document.getElementById('sidebar-logout-form').submit();">
                             <i class="bi bi-box-arrow-right text-danger"></i>
                             <span>Logout</span>
                         </a>
@@ -153,4 +150,3 @@
         </div>
     </div>
 </div>
-
