@@ -71,31 +71,32 @@
 </section>
 
 <section id="about" class="py-5 bg-light">
+  @php
+    $profile = $data['home_profile'] ?? null;
+    $profileImage = !empty($profile?->image) 
+        ? asset('storage/' . $profile->image) 
+        : asset('assets/images/home/sejarah.jpeg');
+  @endphp
 
   <div class="container">
 
     <div class="row align-items-center g-4">
       <div class="col-lg-6 d-flex">
-        <img src="{{ asset('assets/images/home/sejarah.jpeg') }}"
+        <img src="{{ $profileImage }}"
              class="img-fluid about-img"
-             alt="Sejarah">
+             alt="{{ $profile?->title ?: 'Sejarah' }}">
       </div>
       <div class="col-lg-6">
         <div class="sejarah-wrap">
           <h2 class="fw-bold text-success display-5 mb-2">
-            Pesantren Al-Qur'an Rizky Amalia
+            {{ $profile?->title ?: "Pesantren Al-Qur'an Rizky Amalia" }}
           </h2>
           <div class="about-text mt-4">
             <div class="text-muted fs-6 lh-lg about-content">
-              <p>
-                <strong>Pesantren Al-Qur'an Rizky Amalia</strong> tidak bisa lepas dari tokoh ulama Indonesia yang memiliki visi besar dalam pendidikan Islam.
-              </p>
-              <p>
-                Selang dua dekade, tepatnya tahun 1991, semangatnya membangun umat mendorong untuk mendirikan pondok pesantren baru yang menjadi pusat pendidikan Al-Qur'an.
-              </p>
+              $profile?->description
             </div>
           </div>
-          <a href="sejarah"
+          <a href="{{ $profile?->link ?: url('profil/sejarah') }}"
             class="btn btn-success rounded-pill px-4 mt-3">
             Selengkapnya
           </a>

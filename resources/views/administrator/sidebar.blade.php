@@ -57,14 +57,17 @@
 
                 <li class="sidebar-title">Kelola Konten</li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.home_banner.*') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.home_banner.*') || request()->routeIs('admin.home_profile.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-building"></i>
                         <span>Home</span>
                     </a>
-                    <ul class="submenu {{ request()->routeIs('admin.home_banner.*') ? 'submenu-open' : '' }}">
+                    <ul class="submenu {{ request()->routeIs('admin.home_banner.*') || request()->routeIs('admin.home_profile.*') ? 'submenu-open' : '' }}">
                         <li class="submenu-item {{ request()->routeIs('admin.home_banner.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.home_banner.getData') }}" class="submenu-link">Home Banner</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('admin.home_profile.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.home_profile.getData') }}" class="submenu-link">Home Profile</a>
                         </li>
                     </ul>
                 </li>

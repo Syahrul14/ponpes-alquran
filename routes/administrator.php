@@ -43,12 +43,19 @@ Route::prefix('administrator')->group(function () {
       return view('administrator.layout');
     })->name('administrator.dashboard');
 
-    Route::prefix('home-banner')->group(function () {
-      Route::get('/', [HomeBannerController::class, 'getData'])->name('admin.home_banner.getData');
-      Route::post('/store', [HomeBannerController::class, 'store'])->name('admin.home_banner.store');
-      Route::put('/update/{id}', [HomeBannerController::class, 'update'])->name('admin.home_banner.update');
-      Route::delete('/delete/{id}', [HomeBannerController::class, 'delete'])->name('admin.home_banner.delete');
-    });
+      Route::prefix('home-banner')->group(function () {
+        Route::get('/', [HomeBannerController::class, 'getData'])->name('admin.home_banner.getData');
+        Route::post('/store', [HomeBannerController::class, 'store'])->name('admin.home_banner.store');
+        Route::put('/update/{id}', [HomeBannerController::class, 'update'])->name('admin.home_banner.update');
+        Route::delete('/delete/{id}', [HomeBannerController::class, 'delete'])->name('admin.home_banner.delete');
+      });
+
+      Route::prefix('home-profile')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Administrator\Home\HomeProfileController::class, 'getData'])->name('admin.home_profile.getData');
+        Route::post('/store', [\App\Http\Controllers\Administrator\Home\HomeProfileController::class, 'store'])->name('admin.home_profile.store');
+        Route::put('/update/{id}', [\App\Http\Controllers\Administrator\Home\HomeProfileController::class, 'update'])->name('admin.home_profile.update');
+        Route::delete('/delete/{id}', [\App\Http\Controllers\Administrator\Home\HomeProfileController::class, 'delete'])->name('admin.home_profile.delete');
+      });
 
     Route::post('/logout', function (Request $request) {
       Auth::logout();
