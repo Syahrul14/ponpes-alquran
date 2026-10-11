@@ -218,9 +218,44 @@
 
 @endsection
 
+<script src="{{ asset('assets/vendor/ckeditor5/ckeditor.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Event edit button
+        let editorAdd = null;
+        const addDescriptionEl = document.querySelector('#description');
+        if (addDescriptionEl) {
+            ClassicEditor.create(addDescriptionEl)
+                .then(editor => {
+                    editorAdd = editor;
+                    editor.model.document.on('change:data', () => {
+                        addDescriptionEl.value = editor.getData();
+                    });
+                })
+                .catch(error => console.error(error));
+        }
+
+        const addForm = document.querySelector('#addDataModal form');
+        if (addForm) {
+            addForm.addEventListener('submit', () => {
+                if (editorAdd) {
+                    addDescriptionEl.value = editorAdd.getData();
+                }
+            });
+        }
+
+        let editorEdit = null;
+        const editDescriptionEl = document.querySelector('#edit_description');
+        if (editDescriptionEl) {
+            ClassicEditor.create(editDescriptionEl)
+                .then(editor => {
+                    editorEdit = editor;
+                    editor.model.document.on('change:data', () => {
+                        editDescriptionEl.value = editor.getData();
+                    });
+                })
+                .catch(error => console.error(error));
+        }
+
         document.querySelectorAll('a[data-bs-target="#editDataModal"]').forEach(btn => {
             btn.addEventListener('click', function () {
                 const id = this.dataset.id;
@@ -229,8 +264,13 @@
                 document.querySelector('#edit_id').value = id;
 
                 document.querySelector('#edit_title').value = this.dataset.title || '';
-                document.querySelector('#edit_description').value = this.dataset.description || '';
                 document.querySelector('#edit_link').value = this.dataset.link || '';
+
+                const descriptionVal = this.dataset.description || '';
+                editDescriptionEl.value = descriptionVal;
+                if (editorEdit) {
+                    editorEdit.setData(descriptionVal);
+                }
 
                 const imgPreview = document.querySelector('#edit_image_preview');
                 const imgVal = this.dataset.image;
@@ -244,7 +284,15 @@
             });
         });
 
-        // Event delete button
+        const editForm = document.querySelector('#editProfileForm');
+        if (editForm) {
+            editForm.addEventListener('submit', () => {
+                if (editorEdit) {
+                    editDescriptionEl.value = editorEdit.getData();
+                }
+            });
+        }
+
         const deleteLinks = document.querySelectorAll('.delete-link');
         const deleteForm = document.getElementById('deleteForm');
 

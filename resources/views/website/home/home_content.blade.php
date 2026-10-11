@@ -93,7 +93,7 @@
           </h2>
           <div class="about-text mt-4">
             <div class="text-muted fs-6 lh-lg about-content">
-              $profile?->description
+              {!! $profile?->description !!}
             </div>
           </div>
           <a href="{{ $profile?->link ?: url('profil/sejarah') }}"

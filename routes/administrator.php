@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Administrator\Home\HomeBannerController;
+use App\Http\Controllers\Administrator\Home\HomeProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -51,10 +52,10 @@ Route::prefix('administrator')->group(function () {
       });
 
       Route::prefix('home-profile')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Administrator\Home\HomeProfileController::class, 'getData'])->name('admin.home_profile.getData');
-        Route::post('/store', [\App\Http\Controllers\Administrator\Home\HomeProfileController::class, 'store'])->name('admin.home_profile.store');
-        Route::put('/update/{id}', [\App\Http\Controllers\Administrator\Home\HomeProfileController::class, 'update'])->name('admin.home_profile.update');
-        Route::delete('/delete/{id}', [\App\Http\Controllers\Administrator\Home\HomeProfileController::class, 'delete'])->name('admin.home_profile.delete');
+        Route::get('/', [HomeProfileController::class, 'getData'])->name('admin.home_profile.getData');
+        Route::post('/store', [HomeProfileController::class, 'store'])->name('admin.home_profile.store');
+        Route::put('/update/{id}', [HomeProfileController::class, 'update'])->name('admin.home_profile.update');
+        Route::delete('/delete/{id}', [HomeProfileController::class, 'delete'])->name('admin.home_profile.delete');
       });
 
     Route::post('/logout', function (Request $request) {
