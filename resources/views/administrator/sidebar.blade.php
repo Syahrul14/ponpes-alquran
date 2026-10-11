@@ -75,17 +75,23 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.history_banner.*') || request()->routeIs('admin.history_profile.*') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.history_banner.*') || request()->routeIs('admin.history_profile.*') || request()->routeIs('admin.visi.*') || request()->routeIs('admin.misi.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-info-circle-fill"></i>
                         <span>Tentang Kami</span>
                     </a>
-                    <ul class="submenu {{ request()->routeIs('admin.history_banner.*') || request()->routeIs('admin.history_profile.*') ? 'submenu-open' : '' }}">
+                    <ul class="submenu {{ request()->routeIs('admin.history_banner.*') || request()->routeIs('admin.history_profile.*') || request()->routeIs('admin.visi.*') || request()->routeIs('admin.misi.*') ? 'submenu-open' : '' }}">
                         <li class="submenu-item {{ request()->routeIs('admin.history_banner.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.history_banner.getData') }}" class="submenu-link">History Banner</a>
                         </li>
                         <li class="submenu-item {{ request()->routeIs('admin.history_profile.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.history_profile.getData') }}" class="submenu-link">History Profile</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('admin.visi.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.visi.getData') }}" class="submenu-link">Visi</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('admin.misi.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.misi.getData') }}" class="submenu-link">Misi</a>
                         </li>
                     </ul>
                 </li>

@@ -23,4 +23,11 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_visi_misi_page_returns_successful_response(): void
+    {
+        $response = $this->get('/profil/visi-misi');
+
+        $response->assertStatus(200);
+    }
 }

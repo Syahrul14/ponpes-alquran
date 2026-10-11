@@ -1,8 +1,13 @@
 @extends('website.layout')
 
-@section('title', 'Sejarah')
+@section('title', 'Visi & Misi')
 
 @section('content')
+@php
+    $visi = $data['visi'] ?? null;
+    $misi = $data['misi'] ?? null;
+@endphp
+
 <section id="hero-page" class="hero-page d-flex align-items-center position-relative text-white" 
          style="background: url('{{ asset('assets/images/home/home_banner_3.jpg') }}') no-repeat center center / cover; 
                 padding-top: 120px; 
@@ -41,13 +46,19 @@
                 <div class="p-4 shadow-sm h-100 rounded-4 border-start border-4 border-success bg-light">
                     
                     <h4 class="fw-bold text-success mb-3">
-                        <i class="fas fa-bullseye me-2"></i> Visi
+                        <i class="fas fa-bullseye me-2"></i> {{ !empty($visi?->title) ? $visi->title : 'Visi' }}
                     </h4>
 
-                    <p class="text-muted mb-0" style="line-height: 1.8;">
-                        Menjadi lembaga pendidikan Islam yang unggul dalam mencetak generasi 
-                        penghafal Al-Qur’an yang berakhlak mulia, berilmu, dan mampu bersaing di era global.
-                    </p>
+                    <div class="text-muted mb-0" style="line-height: 1.8;">
+                      @if (!empty($visi?->description))
+                        {!! $visi->description !!}
+                      @else
+                        <p class="mb-0">
+                            Menjadi lembaga pendidikan Islam yang unggul dalam mencetak generasi 
+                            penghafal Al-Qur’an yang berakhlak mulia, berilmu, dan mampu bersaing di era global.
+                        </p>
+                      @endif
+                    </div>
 
                 </div>
             </div>
@@ -57,16 +68,22 @@
                 <div class="p-4 shadow-sm h-100 rounded-4 border-start border-4 border-success bg-light">
                     
                     <h4 class="fw-bold text-success mb-3">
-                        <i class="fas fa-tasks me-2"></i> Misi
+                        <i class="fas fa-tasks me-2"></i> {{ !empty($misi?->title) ? $misi->title : 'Misi' }}
                     </h4>
 
-                    <ul class="text-muted ps-3 mb-0" style="line-height: 1.8;">
-                        <li>Menyelenggarakan pendidikan berbasis Al-Qur’an secara intensif.</li>
-                        <li>Membentuk karakter santri yang disiplin dan berakhlak islami.</li>
-                        <li>Mengembangkan potensi akademik dan non-akademik santri.</li>
-                        <li>Menanamkan nilai kemandirian dan tanggung jawab.</li>
-                        <li>Mempersiapkan generasi yang siap menghadapi tantangan zaman.</li>
-                    </ul>
+                    <div class="text-muted mb-0" style="line-height: 1.8;">
+                      @if (!empty($misi?->description))
+                        {!! $misi->description !!}
+                      @else
+                        <ul class="ps-3 mb-0">
+                            <li>Menyelenggarakan pendidikan berbasis Al-Qur’an secara intensif.</li>
+                            <li>Membentuk karakter santri yang disiplin dan berakhlak islami.</li>
+                            <li>Mengembangkan potensi akademik dan non-akademik santri.</li>
+                            <li>Menanamkan nilai kemandirian dan tanggung jawab.</li>
+                            <li>Mempersiapkan generasi yang siap menghadapi tantangan zaman.</li>
+                        </ul>
+                      @endif
+                    </div>
 
                 </div>
             </div>

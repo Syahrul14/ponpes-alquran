@@ -5,6 +5,8 @@ use App\Http\Controllers\Administrator\Home\HomeProfileController;
 use App\Http\Controllers\Administrator\Home\HomeAlumniController;
 use App\Http\Controllers\Administrator\About\History\HistoryBannerController;
 use App\Http\Controllers\Administrator\About\History\HistoryProfileController;
+use App\Http\Controllers\Administrator\About\Visi_Misi\VisiController;
+use App\Http\Controllers\Administrator\About\Visi_Misi\MisiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -80,6 +82,20 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [HistoryProfileController::class, 'store'])->name('admin.history_profile.store');
         Route::put('/update/{id}', [HistoryProfileController::class, 'update'])->name('admin.history_profile.update');
         Route::delete('/delete/{id}', [HistoryProfileController::class, 'delete'])->name('admin.history_profile.delete');
+      });
+
+      Route::prefix('visi')->group(function () {
+        Route::get('/', [VisiController::class, 'getData'])->name('admin.visi.getData');
+        Route::post('/store', [VisiController::class, 'store'])->name('admin.visi.store');
+        Route::put('/update/{id}', [VisiController::class, 'update'])->name('admin.visi.update');
+        Route::delete('/delete/{id}', [VisiController::class, 'delete'])->name('admin.visi.delete');
+      });
+
+      Route::prefix('misi')->group(function () {
+        Route::get('/', [MisiController::class, 'getData'])->name('admin.misi.getData');
+        Route::post('/store', [MisiController::class, 'store'])->name('admin.misi.store');
+        Route::put('/update/{id}', [MisiController::class, 'update'])->name('admin.misi.update');
+        Route::delete('/delete/{id}', [MisiController::class, 'delete'])->name('admin.misi.delete');
       });
 
     Route::post('/logout', function (Request $request) {
