@@ -3,8 +3,12 @@
 @section('title', 'Sejarah')
 
 @section('content')
+@php
+    $banner = $data['history_banner'] ?? null;
+@endphp
+
 <section id="hero-page" class="hero-page d-flex align-items-center position-relative text-white" 
-         style="background: url('{{ asset('assets/images/home/home_banner_3.jpg') }}') no-repeat center center / cover; 
+         style="background: url('{{ !empty($banner?->image) ? asset('storage/' . $banner->image) : asset('assets/images/home/home_banner_3.jpg') }}') no-repeat center center / cover; 
                 padding-top: 120px; 
                 min-height: 40vh;">
     
@@ -14,9 +18,9 @@
         <div class="row justify-content-center text-center">
             <div class="col-lg-8">
                 
-                <h1 class="fw-bold display-4 mb-3 text-uppercase tracking-wide" style="letter-spacing: 1px;">Sejarah</h1>
+                <h1 class="fw-bold display-4 mb-3 text-uppercase tracking-wide" style="letter-spacing: 1px;">{{ !empty($banner?->title) ? $banner->title : 'Sejarah' }}</h1>
                 
-                <p class="lead text-white-50 mb-0 mx-auto" style="max-width: 600px;">Napak tilas perjuangan, visi, dan nilai-nilai luhur berdirinya Ponpes Al-Qur'an Rizky Amalia.</p>
+                <p class="lead text-white-50 mb-0 mx-auto" style="max-width: 600px;">{{ !empty($banner?->sub_title) ? $banner->sub_title : 'Napak tilas perjuangan, visi, dan nilai-nilai luhur berdirinya Ponpes Al-Qur\'an Rizky Amalia.' }}</p>
             </div>
         </div>
     </div>

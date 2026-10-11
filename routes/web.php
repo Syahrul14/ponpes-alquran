@@ -1,14 +1,13 @@
 <?php
 
 use App\Http\Controllers\Website\Home\HomeController;
+use App\Http\Controllers\Website\About\History\HistoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('profil')->group(function () {
-    Route::get('/sejarah', function () {
-        return view('website.about.history');
-    });
+    Route::get('/sejarah', [HistoryController::class, 'index'])->name('website.about.history');
     Route::get('/visi-misi', function () {
         return view('website.about.visi_misi');
     });
