@@ -18,3 +18,4 @@ class HistoryRepository
         return HistoryBannerModel::firstOrNew();
     }
 }
+

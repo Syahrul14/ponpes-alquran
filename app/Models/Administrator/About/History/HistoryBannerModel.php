@@ -14,3 +14,4 @@ class HistoryBannerModel extends Model
         'sub_title',
     ];
 }
+

@@ -21,3 +21,4 @@ class HistoryController extends Controller
         return view('website.about.history_content', compact('data'));
     }
 }
+

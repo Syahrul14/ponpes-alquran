@@ -152,3 +152,4 @@ class HistoryBannerController extends Controller
         }
     }
 }
+
