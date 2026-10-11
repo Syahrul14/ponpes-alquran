@@ -5,41 +5,54 @@
 @section('content')
 
 <section id="hero">
+  @php
+    $banner = $data['home_banner'] ?? null;
+    $slides = [];
+    if (!empty($banner?->image_1)) {
+        $slides[] = asset('storage/' . $banner->image_1);
+    }
+    if (!empty($banner?->image_2)) {
+        $slides[] = asset('storage/' . $banner->image_2);
+    }
+    if (!empty($banner?->image_3)) {
+        $slides[] = asset('storage/' . $banner->image_3);
+    }
+
+    if (empty($slides)) {
+        $slides = [
+            asset('assets/images/home/home_banner_1.jpg'),
+            asset('assets/images/home/home_banner_2.jpeg'),
+            asset('assets/images/home/home_banner_3.jpg'),
+        ];
+    }
+  @endphp
+
   <div id="heroCarousel"
        class="carousel slide carousel-fade"
        data-bs-ride="carousel"
        data-bs-interval="2000">
 
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="hero-slide"
-             style="background-image: url('{{ asset('assets/images/home/home_banner_1.jpg') }}');">
+      @foreach ($slides as $index => $slideImage)
+        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+          <div class="hero-slide"
+               style="background-image: url('{{ $slideImage }}');">
+          </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <div class="hero-slide"
-             style="background-image: url('{{ asset('assets/images/home/home_banner_2.jpeg') }}');">
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="hero-slide"
-             style="background-image: url('{{ asset('assets/images/home/home_banner_3.jpg') }}');">
-        </div>
-      </div>
-
+      @endforeach
     </div>
 
     <div class="hero-content text-white text-center px-3">
 
       <h1 class="fw-bold mb-3 display-6 display-md-4">
-        Pondok Pesantren Al-Qur'an Rizky Amalia
+        {{ $banner?->title ?: "Pondok Pesantren Al-Qur'an Rizky Amalia" }}
       </h1>
 
       <p class="mb-4 fs-6 fs-md-5 mx-auto" style="max-width: 700px;">
-        Mencetak generasi Qurani yang berakhlak mulia, berilmu, dan siap menghadapi tantangan zaman.
+        {{ $banner?->sub_title ?: 'Mencetak generasi Qurani yang berakhlak mulia, berilmu, dan siap menghadapi tantangan zaman.' }}
       </p>
 
-      <a href="#daftar" class="btn btn-success px-4 py-2 rounded-pill shadow-sm">
+      <a href="{{ $banner?->link ?: '#daftar' }}" class="btn btn-success px-4 py-2 rounded-pill shadow-sm">
         Daftar Sekarang
       </a>
 
@@ -105,7 +118,7 @@
         <div class="carousel-item active">
           <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
             <div class="card-body p-4 text-center">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="rounded-circle mb-3 border border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
               <h5 class="card-title fw-bold mb-1">Ahmad Fauzi</h5>
               <p class="text-muted small mb-3">Kepala Sekolah SDN 1 Timur</p>
               <p class="card-text text-secondary" style="font-style: italic;">"Belajar di Ponpes Rizky Amalia memberikan saya fondasi agama yang kuat dan lingkungan yang sangat mendukung untuk menghafal Al-Qur'an."</p>
@@ -116,7 +129,7 @@
         <div class="carousel-item">
           <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
             <div class="card-body p-4 text-center">
-              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop" class="rounded-circle mb-3 border border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
               <h5 class="card-title fw-bold mb-1">Siti Nurhaliza</h5>
               <p class="text-muted small mb-3">Manager PT Xyz</p>
               <p class="card-text text-secondary" style="font-style: italic;">"Metode pembelajaran tahfidznya sangat sistematis. Para pengajar sangat sabar dan membimbing kami hingga benar-benar mutqin."</p>
@@ -127,7 +140,7 @@
         <div class="carousel-item">
           <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
             <div class="card-body p-4 text-center">
-              <img src="https://images.unsplash.com/photo-1780570589435-059359e813cc?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-circle mb-3 border border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
+              <img src="https://images.unsplash.com/photo-1780570589435-059359e813cc?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
               <h5 class="card-title fw-bold mb-1">Muhammad Rizky</h5>
               <p class="text-muted small mb-3">Pengusaha</p>
               <p class="card-text text-secondary" style="font-style: italic;">"Bukan hanya sekadar menghafal, kami juga diajarkan bagaimana mengamalkan nilai-nilai Al-Qur'an dalam kehidupan bermasyarakat."</p>

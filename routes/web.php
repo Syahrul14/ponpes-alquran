@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\Website\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('website.home.home');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('profil')->group(function () {
     Route::get('/sejarah', function () {
