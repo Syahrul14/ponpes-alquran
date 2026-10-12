@@ -32,17 +32,17 @@
         <div class="d-flex gap-2">
           <!-- Facebook -->
           <a href="#" class="btn btn-outline-success border-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; padding: 0;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg" alt="Facebook" style="width: 18px; height: 18px;">
+            <i class="fab fa-facebook-f"></i>
           </a>
           
           <!-- Instagram -->
           <a href="#" class="btn btn-outline-success border-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; padding: 0;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 20px;">
+            <i class="fab fa-instagram"></i>
           </a>
           
           <!-- YouTube -->
           <a href="#" class="btn btn-outline-success border-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; padding: 0;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube" style="width: 20px;">
+            <i class="fab fa-youtube"></i>
           </a>
         
         </div>

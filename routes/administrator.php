@@ -7,6 +7,7 @@ use App\Http\Controllers\Administrator\About\History\HistoryBannerController;
 use App\Http\Controllers\Administrator\About\History\HistoryProfileController;
 use App\Http\Controllers\Administrator\About\Visi_Misi\VisiController;
 use App\Http\Controllers\Administrator\About\Visi_Misi\MisiController;
+use App\Http\Controllers\Administrator\Page_Banner\PageBannerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -96,6 +97,13 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [MisiController::class, 'store'])->name('admin.misi.store');
         Route::put('/update/{id}', [MisiController::class, 'update'])->name('admin.misi.update');
         Route::delete('/delete/{id}', [MisiController::class, 'delete'])->name('admin.misi.delete');
+      });
+
+      Route::prefix('page-banner')->group(function () {
+        Route::get('/', [PageBannerController::class, 'getData'])->name('admin.page_banner.getData');
+        Route::post('/store', [PageBannerController::class, 'store'])->name('admin.page_banner.store');
+        Route::put('/update/{id}', [PageBannerController::class, 'update'])->name('admin.page_banner.update');
+        Route::delete('/delete/{id}', [PageBannerController::class, 'delete'])->name('admin.page_banner.delete');
       });
 
     Route::post('/logout', function (Request $request) {

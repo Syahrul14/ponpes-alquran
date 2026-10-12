@@ -119,7 +119,7 @@
           <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
             <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
               <div class="card-body p-4 text-center">
-                <img src="{{ $alumni->image ? asset('storage/' . $alumni->image) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop' }}" class="rounded-circle mb-3 border-3 border-success-subtle" alt="{{ $alumni->name }}" style="width: 80px; height: 80px; object-fit: cover;">
+                <img src="{{ $alumni->image ? asset('storage/' . $alumni->image) : asset('assets/images/core/logo.png') }}" class="rounded-circle mb-3 border-3 border-success-subtle" alt="{{ $alumni->name }}" style="width: 80px; height: 80px; object-fit: cover;">
                 <h5 class="card-title fw-bold mb-1">{{ $alumni->name }}</h5>
                 @if ($alumni->current_position)
                   <p class="text-muted small mb-3">{{ $alumni->current_position }}</p>
@@ -132,7 +132,7 @@
           <div class="carousel-item active">
             <div class="card border-0 shadow-sm mx-auto my-3" style="max-width: 600px; border-radius: 15px;">
               <div class="card-body p-4 text-center">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
+                <img src="{{ asset('assets/images/core/logo.png') }}" class="rounded-circle mb-3 border-3 border-success-subtle" alt="Foto Alumni" style="width: 80px; height: 80px; object-fit: cover;">
                 <h5 class="card-title fw-bold mb-1">Ahmad Fauzi</h5>
                 <p class="text-muted small mb-3">Kepala Sekolah SDN 1 Timur</p>
                 <p class="card-text text-secondary" style="font-style: italic;">"Belajar di Ponpes Rizky Amalia memberikan saya fondasi agama yang kuat dan lingkungan yang sangat mendukung untuk menghafal Al-Qur'an."</p>

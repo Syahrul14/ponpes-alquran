@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Administrator\Page_Banner\PageBannerModel;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('website.*', function ($view) {
+            $pageBanner = PageBannerModel::first();
+            $view->with('globalPageBanner', $pageBanner);
+        });
     }
 }

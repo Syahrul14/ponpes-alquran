@@ -6,7 +6,7 @@
 
 <!-- HERO -->
 <section id="hero-page" class="hero-page d-flex align-items-center position-relative text-white" 
-         style="background: url('{{ asset('assets/images/home/home_banner_3.jpg') }}') no-repeat center center / cover; 
+         style="background: url('{{ !empty($globalPageBanner?->image) ? asset('storage/' . $globalPageBanner->image) : asset('assets/images/home/home_banner_3.jpg') }}') no-repeat center center / cover; 
                 padding-top: 120px; 
                 min-height: 40vh;">
     

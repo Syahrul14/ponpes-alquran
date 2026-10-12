@@ -149,6 +149,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ request()->routeIs('admin.page_banner.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.page_banner.getData') }}" class="sidebar-link">
+                        <i class="bi bi-image"></i>
+                        <span>Banner Halaman</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-gear-fill"></i>
