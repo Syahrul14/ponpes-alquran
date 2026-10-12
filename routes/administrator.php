@@ -8,6 +8,7 @@ use App\Http\Controllers\Administrator\About\History\HistoryProfileController;
 use App\Http\Controllers\Administrator\About\Visi_Misi\VisiController;
 use App\Http\Controllers\Administrator\About\Visi_Misi\MisiController;
 use App\Http\Controllers\Administrator\Page_Banner\PageBannerController;
+use App\Http\Controllers\Administrator\Academic\Program\ProgramCardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -104,6 +105,13 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [PageBannerController::class, 'store'])->name('admin.page_banner.store');
         Route::put('/update/{id}', [PageBannerController::class, 'update'])->name('admin.page_banner.update');
         Route::delete('/delete/{id}', [PageBannerController::class, 'delete'])->name('admin.page_banner.delete');
+      });
+
+      Route::prefix('program-card')->group(function () {
+        Route::get('/', [ProgramCardController::class, 'getData'])->name('admin.program_card.getData');
+        Route::post('/store', [ProgramCardController::class, 'store'])->name('admin.program_card.store');
+        Route::put('/update/{id}', [ProgramCardController::class, 'update'])->name('admin.program_card.update');
+        Route::delete('/delete/{id}', [ProgramCardController::class, 'delete'])->name('admin.program_card.delete');
       });
 
     Route::post('/logout', function (Request $request) {
