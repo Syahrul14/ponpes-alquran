@@ -31,11 +31,11 @@
                 $programCards = $data['program_cards'] ?? collect();
             @endphp
 
-            @forelse ($programCards as $index => $item)
+            @foreach ($programCards as $index => $item)
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                     <div class="card h-100 border-0 shadow-sm overflow-hidden program-card">
                         <div style="height: 240px; overflow: hidden;">
-                            <img src="{{ !empty($item->image) ? asset('storage/' . $item->image) : asset('assets/images/program/tafizquran.jpeg') }}" 
+                            <img src="{{ asset('storage/' . $item->image) }}" 
                                  class="card-img-top w-100 h-100 object-fit-cover" 
                                  alt="{{ $item->title }}">
                         </div>
@@ -45,47 +45,7 @@
                         </div>
                     </div>
                 </div>
-            @empty
-                <!-- Fallback Default jika belum ada data program di CMS -->
-                <!-- Card 1: Tahfidz Al-Qur'an -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden program-card">
-                        <div style="height: 240px; overflow: hidden;">
-                            <img src="{{ asset('assets/images/program/tafizquran.jpeg') }}" class="card-img-top w-100 h-100 object-fit-cover" alt="Tahfidz Al-Qur'an">
-                        </div>
-                        <div class="card-body p-4">
-                            <h4 class="card-title fw-bold text-dark mb-2">Tahfidz Al-Qur'an</h4>
-                            <p class="card-text text-muted mb-0">Program akselerasi menghafal Al-Qur'an dengan metode talaqqi dan murojaah yang terstruktur untuk mencetak hafizh berkarakter.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2: Madrasah Diniyah -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden program-card">
-                        <div style="height: 240px; overflow: hidden;">
-                            <img src="{{ asset('assets/images/program/madrasah.jpeg') }}" class="card-img-top w-100 h-100 object-fit-cover" alt="Madrasah Diniyah">
-                        </div>
-                        <div class="card-body p-4">
-                            <h4 class="card-title fw-bold text-dark mb-2">Madrasah Diniyah</h4>
-                            <p class="card-text text-muted mb-0">Pendalaman kitab kuning, fiqih, aqidah akhlak, serta tata bahasa Arab (Nahwu & Sharaf) untuk memperkokoh pondasi ilmu syar'i.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3: Kajian Kitab & Dakwah -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden program-card">
-                        <div style="height: 240px; overflow: hidden;">
-                            <img src="{{ asset('assets/images/program/dakwah.jpg') }}" class="card-img-top w-100 h-100 object-fit-cover" alt="Kajian Kitab & Dakwah">
-                        </div>
-                        <div class="card-body p-4">
-                            <h4 class="card-title fw-bold text-dark mb-2">Kajian & Dakwah</h4>
-                            <p class="card-text text-muted mb-0">Pelatihan khitabah (pidato), kepemimpinan, dan pengabdian masyarakat guna mempersiapkan santri yang siap terjun berdakwah.</p>
-                        </div>
-                    </div>
-                </div>
-            @endforelse
+            @endforeach
 
         </div>
     </div>

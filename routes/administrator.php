@@ -9,6 +9,7 @@ use App\Http\Controllers\Administrator\About\Visi_Misi\VisiController;
 use App\Http\Controllers\Administrator\About\Visi_Misi\MisiController;
 use App\Http\Controllers\Administrator\Page_Banner\PageBannerController;
 use App\Http\Controllers\Administrator\Academic\Program\ProgramCardController;
+use App\Http\Controllers\Administrator\Academic\Prestasi\PrestasiCardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -112,6 +113,13 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [ProgramCardController::class, 'store'])->name('admin.program_card.store');
         Route::put('/update/{id}', [ProgramCardController::class, 'update'])->name('admin.program_card.update');
         Route::delete('/delete/{id}', [ProgramCardController::class, 'delete'])->name('admin.program_card.delete');
+      });
+
+      Route::prefix('prestasi-card')->group(function () {
+        Route::get('/', [PrestasiCardController::class, 'getData'])->name('admin.prestasi_card.getData');
+        Route::post('/store', [PrestasiCardController::class, 'store'])->name('admin.prestasi_card.store');
+        Route::put('/update/{id}', [PrestasiCardController::class, 'update'])->name('admin.prestasi_card.update');
+        Route::delete('/delete/{id}', [PrestasiCardController::class, 'delete'])->name('admin.prestasi_card.delete');
       });
 
     Route::post('/logout', function (Request $request) {

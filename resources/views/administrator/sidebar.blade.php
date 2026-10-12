@@ -96,14 +96,17 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.program_card.*') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.program_card.*') || request()->routeIs('admin.prestasi_card.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-mortarboard-fill"></i>
                         <span>Akademik & Program</span>
                     </a>
-                    <ul class="submenu {{ request()->routeIs('admin.program_card.*') ? 'submenu-open' : '' }}">
+                    <ul class="submenu {{ request()->routeIs('admin.program_card.*') || request()->routeIs('admin.prestasi_card.*') ? 'submenu-open' : '' }}">
                         <li class="submenu-item {{ request()->routeIs('admin.program_card.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.program_card.getData') }}" class="submenu-link">Program Pembelajaran</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('admin.prestasi_card.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.prestasi_card.getData') }}" class="submenu-link">Prestasi Santri</a>
                         </li>
                     </ul>
                 </li>

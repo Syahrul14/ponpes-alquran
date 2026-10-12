@@ -4,6 +4,7 @@ use App\Http\Controllers\Website\Home\HomeController;
 use App\Http\Controllers\Website\About\History\HistoryController;
 use App\Http\Controllers\Website\About\Visi_Misi\VisiMisiController;
 use App\Http\Controllers\Website\Program\ProgramController;
+use App\Http\Controllers\Website\Prestasi\PrestasiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -15,9 +16,7 @@ Route::prefix('profil')->group(function () {
 
 Route::get('/program', [ProgramController::class, 'index'])->name('website.program');
 
-Route::get('/prestasi', function () {
-    return view('website.prestasi.prestasi');
-});
+Route::get('/prestasi', [PrestasiController::class, 'index'])->name('website.prestasi');
 
 Route::get('/fasilitas', function () {
     return view('website.fasilitas.fasilitas');
