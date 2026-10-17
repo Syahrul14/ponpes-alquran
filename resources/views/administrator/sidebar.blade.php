@@ -111,6 +111,18 @@
                     </ul>
                 </li>
 
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.fasilitas_card.*') ? 'active' : '' }}">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-buildings-fill"></i>
+                        <span>Fasilitas</span>
+                    </a>
+                    <ul class="submenu {{ request()->routeIs('admin.fasilitas_card.*') ? 'submenu-open' : '' }}">
+                        <li class="submenu-item {{ request()->routeIs('admin.fasilitas_card.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.fasilitas_card.getData') }}" class="submenu-link">Fasilitas Pesantren</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="sidebar-item has-sub">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-newspaper"></i>

@@ -44,4 +44,11 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_fasilitas_page_returns_successful_response(): void
+    {
+        $response = $this->get('/fasilitas');
+
+        $response->assertStatus(200);
+    }
 }

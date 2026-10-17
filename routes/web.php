@@ -5,6 +5,7 @@ use App\Http\Controllers\Website\About\History\HistoryController;
 use App\Http\Controllers\Website\About\Visi_Misi\VisiMisiController;
 use App\Http\Controllers\Website\Program\ProgramController;
 use App\Http\Controllers\Website\Prestasi\PrestasiController;
+use App\Http\Controllers\Website\Fasilitas\FasilitasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -18,9 +19,7 @@ Route::get('/program', [ProgramController::class, 'index'])->name('website.progr
 
 Route::get('/prestasi', [PrestasiController::class, 'index'])->name('website.prestasi');
 
-Route::get('/fasilitas', function () {
-    return view('website.fasilitas.fasilitas');
-});
+Route::get('/fasilitas', [FasilitasController::class, 'index'])->name('website.fasilitas');
 
 Route::get('/informasi/berita', function () {
     return view('website.berita.berita');
