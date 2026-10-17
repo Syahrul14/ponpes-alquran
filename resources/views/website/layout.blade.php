@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/administrator_assets/mazer/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/administrator_assets/mazer/assets/extensions/bootstrap-icons/font/bootstrap-icons.min.css') }}">
 </head>
 <body>
   @include('website.navbar')

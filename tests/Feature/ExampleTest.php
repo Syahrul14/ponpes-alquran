@@ -51,4 +51,18 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_berita_page_returns_successful_response(): void
+    {
+        $response = $this->get('/informasi/berita');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_berita_detail_page_returns_successful_response(): void
+    {
+        $response = $this->get('/informasi/berita/kegiatan-hafalan-santri');
+
+        $response->assertStatus(200);
+    }
 }

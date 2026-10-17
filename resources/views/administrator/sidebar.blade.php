@@ -123,14 +123,14 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.news.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-newspaper"></i>
                         <span>Informasi & Berita</span>
                     </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#" class="submenu-link">Daftar Berita</a>
+                    <ul class="submenu {{ request()->routeIs('admin.news.*') ? 'submenu-open' : '' }}">
+                        <li class="submenu-item {{ request()->routeIs('admin.news.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.news.getData') }}" class="submenu-link">Daftar Berita</a>
                         </li>
                         <li class="submenu-item">
                             <a href="#" class="submenu-link">Informasi / Pengumuman</a>

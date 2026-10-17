@@ -11,6 +11,7 @@ use App\Http\Controllers\Administrator\Page_Banner\PageBannerController;
 use App\Http\Controllers\Administrator\Academic\Program\ProgramCardController;
 use App\Http\Controllers\Administrator\Academic\Prestasi\PrestasiCardController;
 use App\Http\Controllers\Administrator\Facility\FasilitasCardController;
+use App\Http\Controllers\Administrator\Information\News\NewsController as AdminNewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -128,6 +129,13 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [FasilitasCardController::class, 'store'])->name('admin.fasilitas_card.store');
         Route::put('/update/{id}', [FasilitasCardController::class, 'update'])->name('admin.fasilitas_card.update');
         Route::delete('/delete/{id}', [FasilitasCardController::class, 'delete'])->name('admin.fasilitas_card.delete');
+      });
+
+      Route::prefix('news')->group(function () {
+        Route::get('/', [AdminNewsController::class, 'getData'])->name('admin.news.getData');
+        Route::post('/store', [AdminNewsController::class, 'store'])->name('admin.news.store');
+        Route::put('/update/{id}', [AdminNewsController::class, 'update'])->name('admin.news.update');
+        Route::delete('/delete/{id}', [AdminNewsController::class, 'delete'])->name('admin.news.delete');
       });
 
     Route::post('/logout', function (Request $request) {

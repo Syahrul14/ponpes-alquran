@@ -6,6 +6,7 @@ use App\Http\Controllers\Website\About\Visi_Misi\VisiMisiController;
 use App\Http\Controllers\Website\Program\ProgramController;
 use App\Http\Controllers\Website\Prestasi\PrestasiController;
 use App\Http\Controllers\Website\Fasilitas\FasilitasController;
+use App\Http\Controllers\Website\News\NewsController as WebsiteNewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -21,13 +22,8 @@ Route::get('/prestasi', [PrestasiController::class, 'index'])->name('website.pre
 
 Route::get('/fasilitas', [FasilitasController::class, 'index'])->name('website.fasilitas');
 
-Route::get('/informasi/berita', function () {
-    return view('website.berita.berita');
-});
-
-Route::get('/informasi/berita/detail', function () {
-    return view('website.berita.berita_detail');
-});
+Route::get('/informasi/berita', [WebsiteNewsController::class, 'index'])->name('website.berita');
+Route::get('/informasi/berita/{slug}', [WebsiteNewsController::class, 'detail'])->name('website.berita.detail');
 
 Route::get('/informasi/informasi', function() {
     return view('website.informasi.informasi');
