@@ -99,13 +99,18 @@
 
         <!-- QR Image -->
         <div class="mb-3">
-          <img src="{{ asset('assets/images/infaq/qris.jpeg') }}" 
-               alt="QRIS" class="img-fluid rounded" style="max-width:250px;">
+          @if ($qris && $qris->image)
+            <img src="{{ asset('storage/' . $qris->image) }}" 
+                 alt="{{ $qris->title ?? 'QRIS' }}" class="img-fluid rounded" style="max-width:250px;">
+          @else
+            <img src="{{ asset('assets/images/infaq/qris.jpeg') }}" 
+                 alt="QRIS" class="img-fluid rounded" style="max-width:250px;">
+          @endif
         </div>
 
         <!-- Label -->
-        <h5 class="fw-bold mb-1">QRIS Yayasan</h5>
-        <small class="text-muted">Mendukung semua e-wallet & mobile banking</small>
+        <h5 class="fw-bold mb-1">{{ $qris->title ?? 'QRIS Yayasan' }}</h5>
+        <small class="text-muted">{{ $qris->description ?? 'Mendukung semua e-wallet & mobile banking' }}</small>
 
         <!-- Info -->
         <div class="mt-3 text-muted small">
@@ -119,7 +124,7 @@
     <!-- Note -->
     <div class="text-center mt-4">
       <p class="text-muted small">
-        * Setelah melakukan pembayaran, mohon simpan bukti transaksi Anda.
+        {{ $qris->note ?? '* Setelah melakukan pembayaran, mohon simpan bukti transaksi Anda.' }}
       </p>
     </div>
 

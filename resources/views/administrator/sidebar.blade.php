@@ -138,14 +138,17 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.infaq_bank.*') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.infaq_bank.*') || request()->routeIs('admin.infaq_qris.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-heart-fill"></i>
                         <span>Infaq & Donasi</span>
                     </a>
-                    <ul class="submenu {{ request()->routeIs('admin.infaq_bank.*') ? 'submenu-open' : '' }}">
+                    <ul class="submenu {{ request()->routeIs('admin.infaq_bank.*') || request()->routeIs('admin.infaq_qris.*') ? 'submenu-open' : '' }}">
                         <li class="submenu-item {{ request()->routeIs('admin.infaq_bank.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.infaq_bank.getData') }}" class="submenu-link">Rekening Transfer</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('admin.infaq_qris.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.infaq_qris.getData') }}" class="submenu-link">QRIS Infaq</a>
                         </li>
                     </ul>
                 </li>

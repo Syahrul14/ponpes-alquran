@@ -14,6 +14,7 @@ use App\Http\Controllers\Administrator\Facility\FasilitasCardController;
 use App\Http\Controllers\Administrator\Information\News\NewsController as AdminNewsController;
 use App\Http\Controllers\Administrator\Information\Informasi\InformasiController as AdminInformasiController;
 use App\Http\Controllers\Administrator\Infaq\InfaqBankTransferController;
+use App\Http\Controllers\Administrator\Infaq\InfaqQrisController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -152,6 +153,11 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [InfaqBankTransferController::class, 'store'])->name('admin.infaq_bank.store');
         Route::put('/update/{id}', [InfaqBankTransferController::class, 'update'])->name('admin.infaq_bank.update');
         Route::delete('/delete/{id}', [InfaqBankTransferController::class, 'delete'])->name('admin.infaq_bank.delete');
+      });
+
+      Route::prefix('infaq-qris')->group(function () {
+        Route::get('/', [InfaqQrisController::class, 'getData'])->name('admin.infaq_qris.getData');
+        Route::post('/update', [InfaqQrisController::class, 'update'])->name('admin.infaq_qris.update');
       });
 
     Route::post('/logout', function (Request $request) {

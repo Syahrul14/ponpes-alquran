@@ -17,8 +17,8 @@ class InfaqController extends Controller
     public function index()
     {
         $bankTransfers = $this->infaqRepository->getBankTransfers();
+        $qris = $this->infaqRepository->getQris();
 
-        return view('website.infaq.infaq_content', compact('bankTransfers'));
+        return view('website.infaq.infaq_content', compact('bankTransfers', 'qris'));
     }
 }
-
