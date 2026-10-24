@@ -15,6 +15,7 @@ use App\Http\Controllers\Administrator\Information\News\NewsController as AdminN
 use App\Http\Controllers\Administrator\Information\Informasi\InformasiController as AdminInformasiController;
 use App\Http\Controllers\Administrator\Infaq\InfaqBankTransferController;
 use App\Http\Controllers\Administrator\Infaq\InfaqQrisController;
+use App\Http\Controllers\Administrator\Contact\ContactMessageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -158,6 +159,12 @@ Route::prefix('administrator')->group(function () {
       Route::prefix('infaq-qris')->group(function () {
         Route::get('/', [InfaqQrisController::class, 'getData'])->name('admin.infaq_qris.getData');
         Route::post('/update', [InfaqQrisController::class, 'update'])->name('admin.infaq_qris.update');
+      });
+
+      Route::prefix('pesan-masuk')->group(function () {
+        Route::get('/', [ContactMessageController::class, 'getData'])->name('admin.contact_messages.getData');
+        Route::post('/read/{id}', [ContactMessageController::class, 'markAsRead'])->name('admin.contact_messages.markAsRead');
+        Route::delete('/delete/{id}', [ContactMessageController::class, 'delete'])->name('admin.contact_messages.delete');
       });
 
     Route::post('/logout', function (Request $request) {

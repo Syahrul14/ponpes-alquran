@@ -9,6 +9,7 @@ use App\Http\Controllers\Website\Fasilitas\FasilitasController;
 use App\Http\Controllers\Website\News\NewsController as WebsiteNewsController;
 use App\Http\Controllers\Website\Informasi\InformasiController as WebsiteInformasiController;
 use App\Http\Controllers\Website\Infaq\InfaqController as WebsiteInfaqController;
+use App\Http\Controllers\Website\Contact\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -33,7 +34,6 @@ Route::get('/informasi/informasi/{slug}', [WebsiteInformasiController::class, 'd
 Route::get('/informasi/infaq', [WebsiteInfaqController::class, 'index'])->name('website.infaq');
 
 
-Route::get('hubungi-kami', function () {
-    return view('website.hubungi_kami.hubungi_kami');
-});
+Route::get('/hubungi-kami', [ContactController::class, 'index'])->name('website.contact');
+Route::post('/hubungi-kami/send', [ContactController::class, 'sendMessage'])->name('website.contact.send');
 

@@ -86,4 +86,40 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_hubungi_kami_page_returns_successful_response(): void
+    {
+        $response = $this->get('/hubungi-kami');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_send_contact_message_successful(): void
+    {
+        $response = $this->post('/hubungi-kami/send', [
+            'name' => 'Ahmad Fulan',
+            'email' => 'ahmad.fulan@example.com',
+            'subject' => 'Informasi Pendaftaran Santri Baru',
+            'message' => 'Assalamu alaikum, mohon informasi pendaftaran santri baru untuk tahun ajaran mendatang.',
+        ]);
+
+        $response->assertSessionHas('success');
+        $this->assertDatabaseHas('contact_messages', [
+            'email' => 'ahmad.fulan@example.com',
+            'subject' => 'Informasi Pendaftaran Santri Baru',
+            'is_read' => false,
+        ]);
+    }
+
+    public function test_send_contact_message_validation_fails(): void
+    {
+        $response = $this->post('/hubungi-kami/send', [
+            'name' => '',
+            'email' => 'bukan-email',
+            'subject' => '',
+            'message' => 'abc', // less than 5
+        ]);
+
+        $response->assertSessionHasErrors(['name', 'email', 'subject', 'message']);
+    }
 }

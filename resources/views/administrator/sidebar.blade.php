@@ -153,8 +153,8 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                <li class="sidebar-item {{ request()->routeIs('admin.contact_messages.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.contact_messages.getData') }}" class="sidebar-link">
                         <i class="bi bi-chat-dots-fill"></i>
                         <span>Pesan Masuk</span>
                     </a>
