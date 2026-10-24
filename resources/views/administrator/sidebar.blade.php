@@ -170,8 +170,8 @@
 
                 <li class="sidebar-title">Pengaturan</li>
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                <li class="sidebar-item {{ request()->routeIs('admin.management.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.management.getData') }}" class="sidebar-link">
                         <i class="bi bi-people-fill"></i>
                         <span>Manajemen Admin</span>
                     </a>

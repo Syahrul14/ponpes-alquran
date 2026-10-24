@@ -216,4 +216,62 @@ class ExampleTest extends TestCase
             'id' => $socmed->id,
         ]);
     }
+
+    public function test_admin_can_manage_administrators(): void
+    {
+        $superAdmin = \App\Models\User::first() ?? \App\Models\User::factory()->create([
+            'username' => 'super_admin_test',
+            'email' => 'superadmin@test.com',
+        ]);
+
+        // 1. Can view page
+        $pageResponse = $this->actingAs($superAdmin)->get('/administrator/manajemen-admin');
+        $pageResponse->assertStatus(200);
+        $pageResponse->assertSee('Daftar Administrator Sistem');
+
+        // 2. Can store new admin
+        $storeResponse = $this->actingAs($superAdmin)->post('/administrator/manajemen-admin/store', [
+            'name' => 'Admin Baru Test',
+            'username' => 'admin_baru_test',
+            'email' => 'adminbaru@test.com',
+            'password' => 'secret123',
+            'password_confirmation' => 'secret123',
+        ]);
+        $storeResponse->assertSessionHas('success');
+        $this->assertDatabaseHas('users', [
+            'username' => 'admin_baru_test',
+            'email' => 'adminbaru@test.com',
+        ]);
+
+        $newAdmin = \App\Models\User::where('username', 'admin_baru_test')->first();
+        $this->assertNotNull($newAdmin);
+
+        // 3. Can update admin
+        $updateResponse = $this->actingAs($superAdmin)->put("/administrator/manajemen-admin/update/{$newAdmin->id}", [
+            'name' => 'Admin Baru Diedit',
+            'username' => 'admin_baru_edited',
+            'email' => 'adminbaru_edited@test.com',
+        ]);
+        $updateResponse->assertSessionHas('success');
+        $this->assertDatabaseHas('users', [
+            'id' => $newAdmin->id,
+            'name' => 'Admin Baru Diedit',
+            'username' => 'admin_baru_edited',
+            'email' => 'adminbaru_edited@test.com',
+        ]);
+
+        // 4. Cannot delete self
+        $selfDeleteResponse = $this->actingAs($superAdmin)->delete("/administrator/manajemen-admin/delete/{$superAdmin->id}");
+        $selfDeleteResponse->assertSessionHas('error');
+        $this->assertDatabaseHas('users', [
+            'id' => $superAdmin->id,
+        ]);
+
+        // 5. Can delete other admin
+        $deleteResponse = $this->actingAs($superAdmin)->delete("/administrator/manajemen-admin/delete/{$newAdmin->id}");
+        $deleteResponse->assertSessionHas('success');
+        $this->assertDatabaseMissing('users', [
+            'id' => $newAdmin->id,
+        ]);
+    }
 }

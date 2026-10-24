@@ -18,6 +18,7 @@ use App\Http\Controllers\Administrator\Infaq\InfaqQrisController;
 use App\Http\Controllers\Administrator\Contact\ContactMessageController;
 use App\Http\Controllers\Administrator\Contact\ContactInfoController;
 use App\Http\Controllers\Administrator\Setting\FooterSettingController;
+use App\Http\Controllers\Administrator\Management\AdminManagementController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -183,6 +184,13 @@ Route::prefix('administrator')->group(function () {
           Route::post('/update/{id}', [FooterSettingController::class, 'updateSocialMedia'])->name('admin.footer_setting.social_media.update');
           Route::delete('/delete/{id}', [FooterSettingController::class, 'deleteSocialMedia'])->name('admin.footer_setting.social_media.delete');
         });
+      });
+
+      Route::prefix('manajemen-admin')->group(function () {
+        Route::get('/', [AdminManagementController::class, 'getData'])->name('admin.management.getData');
+        Route::post('/store', [AdminManagementController::class, 'store'])->name('admin.management.store');
+        Route::put('/update/{id}', [AdminManagementController::class, 'update'])->name('admin.management.update');
+        Route::delete('/delete/{id}', [AdminManagementController::class, 'delete'])->name('admin.management.delete');
       });
 
     Route::post('/logout', function (Request $request) {
