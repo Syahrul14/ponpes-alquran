@@ -13,6 +13,7 @@ use App\Http\Controllers\Administrator\Academic\Prestasi\PrestasiCardController;
 use App\Http\Controllers\Administrator\Facility\FasilitasCardController;
 use App\Http\Controllers\Administrator\Information\News\NewsController as AdminNewsController;
 use App\Http\Controllers\Administrator\Information\Informasi\InformasiController as AdminInformasiController;
+use App\Http\Controllers\Administrator\Infaq\InfaqBankTransferController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -144,6 +145,13 @@ Route::prefix('administrator')->group(function () {
         Route::post('/store', [AdminInformasiController::class, 'store'])->name('admin.informasi.store');
         Route::put('/update/{id}', [AdminInformasiController::class, 'update'])->name('admin.informasi.update');
         Route::delete('/delete/{id}', [AdminInformasiController::class, 'delete'])->name('admin.informasi.delete');
+      });
+
+      Route::prefix('infaq-bank')->group(function () {
+        Route::get('/', [InfaqBankTransferController::class, 'getData'])->name('admin.infaq_bank.getData');
+        Route::post('/store', [InfaqBankTransferController::class, 'store'])->name('admin.infaq_bank.store');
+        Route::put('/update/{id}', [InfaqBankTransferController::class, 'update'])->name('admin.infaq_bank.update');
+        Route::delete('/delete/{id}', [InfaqBankTransferController::class, 'delete'])->name('admin.infaq_bank.delete');
       });
 
     Route::post('/logout', function (Request $request) {

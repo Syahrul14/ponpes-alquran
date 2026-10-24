@@ -138,11 +138,16 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.infaq_bank.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-heart-fill"></i>
                         <span>Infaq & Donasi</span>
                     </a>
+                    <ul class="submenu {{ request()->routeIs('admin.infaq_bank.*') ? 'submenu-open' : '' }}">
+                        <li class="submenu-item {{ request()->routeIs('admin.infaq_bank.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.infaq_bank.getData') }}" class="submenu-link">Rekening Transfer</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item">
