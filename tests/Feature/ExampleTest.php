@@ -65,4 +65,18 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_informasi_page_returns_successful_response(): void
+    {
+        $response = $this->get('/informasi/informasi');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_informasi_detail_page_returns_successful_response(): void
+    {
+        $response = $this->get('/informasi/informasi/kegiatan-santri-bulan-ini');
+
+        $response->assertStatus(200);
+    }
 }

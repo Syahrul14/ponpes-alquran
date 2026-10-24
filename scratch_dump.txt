@@ -1,0 +1,20 @@
+->name('admin.fasilitas_card.delete');
+      });
+
+      Route::prefix('news')->group(function () {
+        Route::get('/', [AdminNewsController::class, 'getData'])->name('admin.news.getData');
+        Route::post('/store', [AdminNewsController::class, 'store'])->name('admin.news.store');
+        Route::put('/update/{id}', [AdminNewsController::class, 'update'])->name('admin.news.update');
+        Route::delete('/delete/{id}', [AdminNewsController::class, 'delete'])->name('admin.news.delete');
+      });
+
+    Route::post('/logout', function (Request $request) {
+      Auth::logout();
+
+      $request->session()->invalidate();
+      $request->session()->regenerateToken();
+
+      return redirect()->route('administrator.login');
+    })->name('administrator.logout');
+  });
+});
