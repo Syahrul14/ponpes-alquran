@@ -274,4 +274,17 @@ class ExampleTest extends TestCase
             'id' => $newAdmin->id,
         ]);
     }
+
+    public function test_authenticated_admin_can_access_dashboard_with_metrics(): void
+    {
+        $admin = \App\Models\User::first() ?? \App\Models\User::factory()->create();
+
+        $response = $this->actingAs($admin)->get('/administrator/dashboard');
+
+        $response->assertStatus(200);
+        $response->assertSee('Selamat Datang');
+        $response->assertSee('Pesan Masuk');
+        $response->assertSee('Pintasan Aksi Cepat');
+        $response->assertSee('Seluruh Modul Berjalan Normal');
+    }
 }

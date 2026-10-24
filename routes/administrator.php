@@ -19,6 +19,7 @@ use App\Http\Controllers\Administrator\Contact\ContactMessageController;
 use App\Http\Controllers\Administrator\Contact\ContactInfoController;
 use App\Http\Controllers\Administrator\Setting\FooterSettingController;
 use App\Http\Controllers\Administrator\Management\AdminManagementController;
+use App\Http\Controllers\Administrator\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -57,9 +58,7 @@ Route::prefix('administrator')->group(function () {
 
   Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', function () {
-      return view('administrator.layout');
-    })->name('administrator.dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('administrator.dashboard');
 
       Route::prefix('home-banner')->group(function () {
         Route::get('/', [HomeBannerController::class, 'getData'])->name('admin.home_banner.getData');
