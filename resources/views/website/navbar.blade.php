@@ -4,7 +4,7 @@
 
     <!-- LOGO -->
     <a class="navbar-brand fw-bold" href="#">
-      <img src="{{ asset('assets/images/core/logo.png') }}"
+      <img src="{{ !empty($globalFooter?->logo) ? asset('storage/' . $globalFooter->logo) : asset('assets/images/core/logo.png') }}"
            alt="Logo"
            height="30"
            class="d-inline-block align-text-top me-2">

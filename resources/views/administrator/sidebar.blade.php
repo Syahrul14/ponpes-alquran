@@ -184,8 +184,8 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                <li class="sidebar-item {{ request()->routeIs('admin.footer_setting.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.footer_setting.getData') }}" class="sidebar-link">
                         <i class="bi bi-gear-fill"></i>
                         <span>Pengaturan Web</span>
                     </a>

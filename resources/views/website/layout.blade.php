@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>@yield('title') - Ponpes Al-Quran Rizky Amalia</title>
-  <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/core/logo.png') }}">
+  <link rel="icon" type="image/x-icon" href="{{ !empty($globalFooter?->logo) ? asset('storage/' . $globalFooter->logo) : asset('assets/images/core/logo.png') }}">
 
   <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/administrator_assets/mazer/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css') }}">

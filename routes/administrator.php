@@ -17,6 +17,7 @@ use App\Http\Controllers\Administrator\Infaq\InfaqBankTransferController;
 use App\Http\Controllers\Administrator\Infaq\InfaqQrisController;
 use App\Http\Controllers\Administrator\Contact\ContactMessageController;
 use App\Http\Controllers\Administrator\Contact\ContactInfoController;
+use App\Http\Controllers\Administrator\Setting\FooterSettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -171,6 +172,17 @@ Route::prefix('administrator')->group(function () {
         Route::get('/', [ContactMessageController::class, 'getData'])->name('admin.contact_messages.getData');
         Route::post('/read/{id}', [ContactMessageController::class, 'markAsRead'])->name('admin.contact_messages.markAsRead');
         Route::delete('/delete/{id}', [ContactMessageController::class, 'delete'])->name('admin.contact_messages.delete');
+      });
+
+      Route::prefix('pengaturan-web')->group(function () {
+        Route::get('/', [FooterSettingController::class, 'getData'])->name('admin.footer_setting.getData');
+        Route::post('/update', [FooterSettingController::class, 'update'])->name('admin.footer_setting.update');
+
+        Route::prefix('social-media')->group(function () {
+          Route::post('/store', [FooterSettingController::class, 'storeSocialMedia'])->name('admin.footer_setting.social_media.store');
+          Route::post('/update/{id}', [FooterSettingController::class, 'updateSocialMedia'])->name('admin.footer_setting.social_media.update');
+          Route::delete('/delete/{id}', [FooterSettingController::class, 'deleteSocialMedia'])->name('admin.footer_setting.social_media.delete');
+        });
       });
 
     Route::post('/logout', function (Request $request) {

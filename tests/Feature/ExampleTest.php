@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -149,5 +151,69 @@ class ExampleTest extends TestCase
         $websiteResponse->assertSee('Jl. Ponpes Al-Quran No. 99, Sleman, DI Yogyakarta');
         $websiteResponse->assertSee('admin@ponpes-alquran.sch.id');
         $websiteResponse->assertSee('https://www.google.com/maps/embed?pb=test-location');
+    }
+
+    public function test_admin_can_update_footer_settings_and_display_on_website(): void
+    {
+        Storage::fake('public');
+        $user = \App\Models\User::first() ?? \App\Models\User::factory()->create();
+
+        $logoFile = UploadedFile::fake()->image('test_logo.png');
+
+        $response = $this->actingAs($user)->post('/administrator/pengaturan-web/update', [
+            'pesantren_name' => 'Pesantren Modern Al-Quran Super',
+            'about_text' => 'Deskripsi profil singkat footer untuk pengujian.',
+            'copyright_text' => 'Pesantren Modern Al-Quran Super. All Rights Reserved.',
+            'logo' => $logoFile,
+        ]);
+
+        $response->assertSessionHas('success');
+        $this->assertDatabaseHas('footer_settings', [
+            'pesantren_name' => 'Pesantren Modern Al-Quran Super',
+            'about_text' => 'Deskripsi profil singkat footer untuk pengujian.',
+            'copyright_text' => 'Pesantren Modern Al-Quran Super. All Rights Reserved.',
+        ]);
+
+        $websiteResponse = $this->get('/');
+        $websiteResponse->assertStatus(200);
+        $websiteResponse->assertSee('Pesantren Modern Al-Quran Super');
+        $websiteResponse->assertSee('Deskripsi profil singkat footer untuk pengujian.');
+    }
+
+    public function test_admin_can_manage_social_media(): void
+    {
+        Storage::fake('public');
+        $user = \App\Models\User::first() ?? \App\Models\User::factory()->create();
+
+        $imageFile = UploadedFile::fake()->image('instagram.png');
+
+        // Store
+        $response = $this->actingAs($user)->post('/administrator/pengaturan-web/social-media/store', [
+            'name' => 'Instagram Pesantren',
+            'url' => 'https://instagram.com/ponpes_test',
+            'image' => $imageFile,
+            'is_active' => '1',
+            'order' => 1,
+        ]);
+
+        $response->assertSessionHas('success');
+        $this->assertDatabaseHas('footer_social_media', [
+            'name' => 'Instagram Pesantren',
+            'url' => 'https://instagram.com/ponpes_test',
+        ]);
+
+        $socmed = \App\Models\Administrator\Setting\FooterSocialMediaModel::where('name', 'Instagram Pesantren')->first();
+        $this->assertNotNull($socmed);
+
+        $websiteResponse = $this->get('/');
+        $websiteResponse->assertStatus(200);
+        $websiteResponse->assertSee('https://instagram.com/ponpes_test');
+
+        // Delete
+        $deleteResponse = $this->actingAs($user)->delete("/administrator/pengaturan-web/social-media/delete/{$socmed->id}");
+        $deleteResponse->assertSessionHas('success');
+        $this->assertDatabaseMissing('footer_social_media', [
+            'id' => $socmed->id,
+        ]);
     }
 }
