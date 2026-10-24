@@ -153,11 +153,19 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item {{ request()->routeIs('admin.contact_messages.*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.contact_messages.getData') }}" class="sidebar-link">
-                        <i class="bi bi-chat-dots-fill"></i>
-                        <span>Pesan Masuk</span>
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.contact_info.*') || request()->routeIs('admin.contact_messages.*') ? 'active' : '' }}">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-headset"></i>
+                        <span>Kontak & Pesan</span>
                     </a>
+                    <ul class="submenu {{ request()->routeIs('admin.contact_info.*') || request()->routeIs('admin.contact_messages.*') ? 'submenu-open' : '' }}">
+                        <li class="submenu-item {{ request()->routeIs('admin.contact_info.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.contact_info.getData') }}" class="submenu-link">Informasi Kontak</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('admin.contact_messages.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.contact_messages.getData') }}" class="submenu-link">Pesan Masuk</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-title">Pengaturan</li>

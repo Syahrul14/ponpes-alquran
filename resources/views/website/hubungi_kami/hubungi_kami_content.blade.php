@@ -104,7 +104,7 @@
                         </div>
                         <div>
                             <strong class="text-dark d-block">Alamat Pesantren</strong>
-                            <p class="mb-0 text-muted small">Jl. Contoh No.123, Kabupaten/Kota, Indonesia</p>
+                            <p class="mb-0 text-muted small">{{ $contactInfo->address ?? 'Jl. Contoh No.123, Kabupaten/Kota, Indonesia' }}</p>
                         </div>
                     </div>
 
@@ -114,7 +114,7 @@
                         </div>
                         <div>
                             <strong class="text-dark d-block">Telepon / WhatsApp</strong>
-                            <p class="mb-0 text-muted small">0812-3456-7890</p>
+                            <p class="mb-0 text-muted small">{{ $contactInfo->phone ?? '0812-3456-7890' }}</p>
                         </div>
                     </div>
 
@@ -124,7 +124,7 @@
                         </div>
                         <div>
                             <strong class="text-dark d-block">Email Resmi</strong>
-                            <p class="mb-0 text-muted small">info@ponpes.com</p>
+                            <p class="mb-0 text-muted small">{{ $contactInfo->email ?? 'info@ponpes.com' }}</p>
                         </div>
                     </div>
 
@@ -134,7 +134,7 @@
                         </div>
                         <div>
                             <strong class="text-dark d-block">Jam Pelayanan Kantor</strong>
-                            <p class="mb-0 text-muted small">Senin - Sabtu (08:00 - 16:00 WIB)</p>
+                            <p class="mb-0 text-muted small">{{ $contactInfo->opening_hours ?? 'Senin - Sabtu (08:00 - 16:00 WIB)' }}</p>
                         </div>
                     </div>
 
@@ -147,7 +147,7 @@
         <div class="mt-5" data-aos="fade-up">
             <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.97085556088!2d110.33364489021656!3d-7.803248457435839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a582c7e459e7b%3A0x5701c5404fb7a847!2sLempuyangan!5e0!3m2!1sen!2sid!4v1781430015998!5m2!1sen!2sid"
+                    src="{{ $contactInfo->maps_iframe ?? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.97085556088!2d110.33364489021656!3d-7.803248457435839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a582c7e459e7b%3A0x5701c5404fb7a847!2sLempuyangan!5e0!3m2!1sen!2sid!4v1781430015998!5m2!1sen!2sid' }}"
                     width="100%" 
                     height="350" 
                     style="border:0;" 

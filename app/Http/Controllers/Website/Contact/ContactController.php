@@ -17,7 +17,8 @@ class ContactController extends Controller
 
     public function index()
     {
-        return view('website.hubungi_kami.hubungi_kami_content');
+        $contactInfo = $this->contactRepository->getContactInfo();
+        return view('website.hubungi_kami.hubungi_kami_content', compact('contactInfo'));
     }
 
     public function sendMessage(Request $request)

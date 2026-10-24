@@ -16,6 +16,7 @@ use App\Http\Controllers\Administrator\Information\Informasi\InformasiController
 use App\Http\Controllers\Administrator\Infaq\InfaqBankTransferController;
 use App\Http\Controllers\Administrator\Infaq\InfaqQrisController;
 use App\Http\Controllers\Administrator\Contact\ContactMessageController;
+use App\Http\Controllers\Administrator\Contact\ContactInfoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -159,6 +160,11 @@ Route::prefix('administrator')->group(function () {
       Route::prefix('infaq-qris')->group(function () {
         Route::get('/', [InfaqQrisController::class, 'getData'])->name('admin.infaq_qris.getData');
         Route::post('/update', [InfaqQrisController::class, 'update'])->name('admin.infaq_qris.update');
+      });
+
+      Route::prefix('informasi-kontak')->group(function () {
+        Route::get('/', [ContactInfoController::class, 'getData'])->name('admin.contact_info.getData');
+        Route::post('/update', [ContactInfoController::class, 'update'])->name('admin.contact_info.update');
       });
 
       Route::prefix('pesan-masuk')->group(function () {

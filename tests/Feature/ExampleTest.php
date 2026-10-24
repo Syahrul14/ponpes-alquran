@@ -122,4 +122,32 @@ class ExampleTest extends TestCase
 
         $response->assertSessionHasErrors(['name', 'email', 'subject', 'message']);
     }
+
+    public function test_admin_can_update_contact_info_and_display_on_website(): void
+    {
+        $user = \App\Models\User::first() ?? \App\Models\User::factory()->create();
+
+        $response = $this->actingAs($user)->post('/administrator/informasi-kontak/update', [
+            'address' => 'Jl. Ponpes Al-Quran No. 99, Sleman, DI Yogyakarta',
+            'phone' => '0812-9999-8888',
+            'email' => 'admin@ponpes-alquran.sch.id',
+            'opening_hours' => 'Senin - Jumat (07:30 - 15:30 WIB)',
+            'maps_iframe' => '<iframe src="https://www.google.com/maps/embed?pb=test-location" width="600"></iframe>',
+        ]);
+
+        $response->assertSessionHas('success');
+        $this->assertDatabaseHas('contact_info', [
+            'address' => 'Jl. Ponpes Al-Quran No. 99, Sleman, DI Yogyakarta',
+            'phone' => '0812-9999-8888',
+            'email' => 'admin@ponpes-alquran.sch.id',
+            'opening_hours' => 'Senin - Jumat (07:30 - 15:30 WIB)',
+            'maps_iframe' => 'https://www.google.com/maps/embed?pb=test-location',
+        ]);
+
+        $websiteResponse = $this->get('/hubungi-kami');
+        $websiteResponse->assertStatus(200);
+        $websiteResponse->assertSee('Jl. Ponpes Al-Quran No. 99, Sleman, DI Yogyakarta');
+        $websiteResponse->assertSee('admin@ponpes-alquran.sch.id');
+        $websiteResponse->assertSee('https://www.google.com/maps/embed?pb=test-location');
+    }
 }
